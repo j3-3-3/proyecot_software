@@ -1,0 +1,491 @@
+Curso 2025-2026                                                                                 4/3/26
+
+
+
+
+                                         Análisis temporal
+
+                                                     Luis M. Ramos
+
+
+
+
+                                           http://www.fandejuegos.cl/juego/dora-botas-rescate
+
+
+
+
+                                                          Índice
+                          O   Análisis temporal
+                              O   bloques combinacionales
+                              O   circuitos combinacionales
+                              O   bloques secuenciales
+                              O   BR32
+                              O   procesador
+
+
+
+
+Arquitectura y Organización de
+Computadores 2 - Teruel                                                                             1
+Curso 2025-2026                                                                    4/3/26
+
+
+
+
+                                 Análisis temporal de un
+                                 bloque combinacional
+
+
+
+
+                               Análisis temporal de un bloque
+                                       combinacional
+                           O   Definición:
+                                 El análisis temporal de un bloque combinacional
+                                 consiste en calcular el retardo desde cada
+                                 entrada hasta cada salida
+
+
+
+                           O   Ejemplo: analizar el siguiente bloque
+                               combinacional
+
+
+
+
+Arquitectura y Organización de
+Computadores 2 - Teruel                                                                2
+Curso 2025-2026                                                                            4/3/26
+
+
+
+
+                         Ejemplo
+                        O Necesitamos saber:
+                           O Cómo está diseñado
+                           O El retardo de cada
+                              puerta
+                        O Cambio en una entrada provoca cambio en salida:
+                           O A (1à0) provoca cambio en Z (0à1) 85 ps después
+                           O B (1à0) provoca cambio en Z (0à1) 85 ps después
+                           O C (0à1) provoca cambio en Z (0à1) 80 ps después
+                           O E (0à1) provoca cambio en Z (0à1) 60 ps después
+                           O S (0à1) provoca cambio en Z (0à1) 20 ps después
+                           O D (1à0) y F (1à0) no provocan cambios en Z (con los valores
+                              actuales)
+
+
+
+
+                         Ejemplo
+                        O Retardo de un camino
+                          (ENTàSAL): suma de los
+                          retardos de las puertas
+                          que atraviesa
+                                 dENTàSAL
+
+                                 dAàZ = 85 ps       dBàZ = 85 ps                85
+
+                                 dCàZ = 80 ps       dDàZ = 80 ps                80
+
+
+                                 dEàZ = 60 ps       dFàZ = 60 ps                60
+                                                                                20
+                                 dSàZ = 20 ps
+
+
+
+
+Arquitectura y Organización de
+Computadores 2 - Teruel                                                                        3
+Curso 2025-2026                                                                             4/3/26
+
+
+
+
+                                     Ejemplo: MUX 4:1
+                           O   Cambios en entradas:
+                                 O X0 (1à0) provoca Z (1à0)
+                                 O S0 (0à1) provoca Z (1à0)
+
+
+
+                              ¿Cuánto tardan?
+                            Midamos dX0àZ y dS0àZ
+
+
+
+
+                                     Ejemplo: MUX 4:1
+                            𝑍 = 𝑋! ∗ 𝑆" ∗ 𝑆! + 𝑋" ∗ 𝑆" ∗ 𝑆! + 𝑋# ∗ 𝑆" ∗ 𝑆! + 𝑋$ ∗ 𝑆" ∗ 𝑆!
+
+
+                                                                       O   El cambio en
+                                                                           X0 (1 à 0)
+                                                                           debe atravesar
+                                                                           AND3 y OR4
+                                                                           para llegar a
+                                                  dX0àZ = dAND3+dOR4       Z (1 à 0)
+
+
+
+
+Arquitectura y Organización de
+Computadores 2 - Teruel                                                                         4
+Curso 2025-2026                                                                             4/3/26
+
+
+
+
+                                     Ejemplo: MUX 4:1
+                            𝑍 = 𝑋! ∗ 𝑆" ∗ 𝑆! + 𝑋" ∗ 𝑆" ∗ 𝑆! + 𝑋# ∗ 𝑆" ∗ 𝑆! + 𝑋$ ∗ 𝑆" ∗ 𝑆!
+
+                                                                 O El cambio en
+
+                                                                    S0 (0 à 1)
+                                                                     ¿cuánto   tarda en
+                                                                    llegar a
+                                                                    Z (1 à 0)?
+
+                                               dS0àZ = max(dNOT+dAND3+dOR4, dAND3+dOR4)
+
+
+
+
+                                     Ejemplo: MUX 4:1
+                            𝑍 = 𝑋! ∗ 𝑆" ∗ 𝑆! + 𝑋" ∗ 𝑆" ∗ 𝑆! + 𝑋# ∗ 𝑆" ∗ 𝑆! + 𝑋$ ∗ 𝑆" ∗ 𝑆!
+
+                                                                 O Los caminos desde
+                                                                    todas las X tienen el
+                                                      20
+                                                                    mismo retardo:
+                                                                          dXàZ = 40 ps
+                                                                 O Los caminos desde
+                                             20                     todas las S tienen el
+                                                                    mismo retardo:
+                                 5
+                                                                          dSàZ = 45 ps
+
+
+
+
+Arquitectura y Organización de
+Computadores 2 - Teruel                                                                         5
+Curso 2025-2026                                                        4/3/26
+
+
+
+
+                           Representación de los retardos en el
+                                 bloque combinacional
+                           O   Etiquetamos cada bloque combinacional
+                               con los retardos de sus caminos
+
+                           Ejemplo MUX 4:1
+                              dXàZ = 40 ps   40
+                                                                  40
+                              dSàZ = 45 ps
+                                                  45
+                                                              5
+
+
+
+
+                               Análisis temporal de un
+                               circuito combinacional
+
+
+
+
+Arquitectura y Organización de
+Computadores 2 - Teruel                                                    6
+Curso 2025-2026                                                                                               4/3/26
+
+
+
+
+                                                                             85
+
+
+                          Ejemplo                                            80
+
+                                                                             60
+                                                                                                  85
+
+                                                                                                  80
+                                                                             20
+                       O Necesitamos saber:                                                       60
+                          O el análisis temporal de                                               20
+                             cada bloque combinacional
+
+                                            O Debemos calcular el retardo del camino más largo de
+                                               cada entrada del circuito (A0,B0,C0,D0,E0,F0,S0,B1,C1,D1,F1)
+                                               a cada salida del circuito (Z1)
+
+
+                           dA,BàZ = 85 ps   Ejemplo: dA0àZ1 = dA0àZ0 + max(dA1àZ1, dE1àZ1, dS1àZ1)
+                           dC,DàZ = 80 ps                 = 85 + max(85, 60, 20) = 85 + 85 = 170 ps
+                           dE,FàZ = 60 ps
+                           dSàZ = 20 ps                dB0à Z1 = …
+
+                                                       dC0à Z1 = …
+
+
+
+
+                                  Análisis temporal de
+                                  un bloque secuencial
+
+
+
+
+Arquitectura y Organización de
+Computadores 2 - Teruel                                                                                           7
+Curso 2025-2026                                                                                                4/3/26
+
+
+
+
+                                 Análisis temporal de un
+                                   bloque secuencial
+                            O Definición:
+                           El análisis temporal de un bloque secuencial consiste en averiguar:
+                           1.- el retardo entre que se realiza un cambio en cada entrada y
+                           cada salida toma el valor correcto
+                           dENTàSAL: retardo del camino combinacional ENTàSAL
+                           2.- el retardo desde que llega el flanco de reloj y cada salida toma
+                           el valor correcto
+                           dSAL: dREG + retardo del camino combinacional REGàSAL
+                           3.- la antelación mínima con respecto al flanco de reloj con la que
+                           establecer el valor de cada entrada
+                           tsetupENT: retardo del camino combinacional ENTàREG + tsetupREG
+
+
+
+
+                                                             85
+
+
+
+
+                         Ejemplo
+                                                             80
+                                                                            85
+                                                             60
+                                                                            80      30   50
+                                                             20
+
+                                                                            60
+
+                         O Necesitamos saber:                               20
+
+
+                            O El análisis temporal de cada bloque combinacional
+                            O El tiempo de setup y delay del REG (FFD en este caso)
+                              tsetupFFD = 30 ps dFFD = 50 ps
+                         O Caminos ENTàSAL
+                            O G2 puede provocar cambio en Z2
+                              dG2àZ2 = 20 ps
+                                                                                              dA,BàZ = 85 ps
+                         O Caminos FFDàSAL                                                    dC,DàZ = 80 ps
+                                                                                              dE,FàZ = 60 ps
+                            O El flanco de reloj puede provocar que cambie Z2                 dSàZ = 20 ps
+                              dZ2 = dFFD + dOR = 50 + 20 = 70 ps
+                         O Caminos ENTàFFD
+                            O Cambio en A0 puede provocar cambio en entrada FFD
+                               tsetupA0 = dA0àZ1 + tsetupFFD = 170 + 30 = 200 ps
+
+
+
+
+Arquitectura y Organización de
+Computadores 2 - Teruel                                                                                            8
+Curso 2025-2026                                                                                              4/3/26
+
+
+
+
+                          Análisis temporal del BR32
+                           O ENTàSAL: RAàbusA RBàbusB
+                           O REGàSAL: REGàbusA REGàbusB
+
+
+
+                           Son caminos que intervienen en el proceso de lectura
+                               Camino                                Retardo
+                            RA1-0àbusA     dRAàbusA= max(dRA1-0àbusA, dRA4-2àbusA)
+                            RA4-2àbusA     Como no sabemos qué bits cambian, nos quedamos con el peor caso
+                                           para todos los bits del bus RA
+
+
+                            REGàbusA       dbusA= dREG + …
+
+
+
+
+                          Análisis temporal del BR32
+                           O   ENTàREG
+
+
+
+
+                           Son caminos que intervienen en el proceso de escritura
+                                 Camino                     Restricción temporal
+                               RWàREG          tsetupRW = dRWàREG + tsetupREG
+                               busWàREG        tsetupbusW = dbusWàREG + tsetupREG
+                               RegWràREG       tsetupRegWr = dRegWràREG + tsetupREG
+
+
+
+
+Arquitectura y Organización de
+Computadores 2 - Teruel                                                                                          9
+Curso 2025-2026                                                                                     4/3/26
+
+
+
+
+                             Análisis temporal de
+                            un circuito secuencial
+                                   En nuestro caso… de un procesador
+
+
+
+
+                           Análisis temporal de un procesador
+
+                           O Definición:
+                            El análisis temporal de un procesador consiste en identificar el
+                            camino crítico y su retardo.
+                            El camino crítico es el camino combinacional de mayor retardo.
+                            La inversa del retardo del camino crítico será la frecuencia máxima a
+                            la que se puede asegurar un funcionamiento correcto del procesador.
+
+
+
+
+Arquitectura y Organización de
+Computadores 2 - Teruel                                                                                10
+Curso 2025-2026                                                                                               4/3/26
+
+
+
+
+                                                                                      dROM         = 80 ps
+
+                         Ejemplo                                                      dSUM
+                                                                                      dRAàbusA
+                                                                                                   = 260 ps
+                                                                                                   = 70 ps
+                                                                                      dbusA        = 60 ps
+                         O Necesitamos el análisis temporal de todos los              tsetupRW     = 50 ps
+                           bloques combinacionales y secuenciales que utiliza         tsetupbusW   = 40 ps
+                                                                                      dCONT        = 60 ps
+                         O Hay que medir el retardo de todos los caminos
+                           ↑ à salida SEC à bloques COMB à entrada SEC à ↑
+                                camino1: CONTàROMàRAàbusAà+àbusWàREG
+                                  dcamino1 = dCONT + dROM + dRAàbusA + dSUM + tsetupbusW =
+                                           = 60 + 80 + 70 + 260 + 40 = 510 ps
+
+
+
+                                                                            70
+                           60
+                                                                                 60          260
+                                                                       50
+                                               80                      40
+
+
+
+
+                                                                                      dROM         = 80 ps
+
+                         Ejemplo                                                      dSUM
+                                                                                      dRAàbusA
+                                                                                                   = 260 ps
+                                                                                                   = 70 ps
+                                                                                      dbusA        = 60 ps
+                         O Necesitamos el análisis temporal de todos los              tsetupRW     = 50 ps
+                           bloques combinacionales y secuenciales que utiliza         tsetupbusW   = 40 ps
+                                                                                      dCONT        = 60 ps
+                         O Hay que medir el retardo de todos los caminos
+                           ↑ à salida SEC à bloques COMB à entrada SEC à ↑
+                                camino2: REGàbusAà+àbusWàREG
+                                  dcamino2 = dbusA + dSUM + tsetupbusW =
+                                           = 60 + 260 + 40 = 360 ps
+
+
+
+                                                                            70
+                           60
+                                                                                 60          260
+                                                                       50
+                                               80                      40
+
+
+
+
+Arquitectura y Organización de
+Computadores 2 - Teruel                                                                                          11
+Curso 2025-2026                                                                                               4/3/26
+
+
+
+
+                                                                                      dROM         = 80 ps
+
+                         Ejemplo                                                      dSUM
+                                                                                      dRAàbusA
+                                                                                                   = 260 ps
+                                                                                                   = 70 ps
+                                                                                      dbusA        = 60 ps
+                         O Necesitamos el análisis temporal de todos los              tsetupRW     = 50 ps
+                           bloques combinacionales y secuenciales que utiliza         tsetupbusW   = 40 ps
+                                                                                      dCONT        = 60 ps
+                         O Hay que medir el retardo de todos los caminos
+                           ↑ à salida SEC à bloques COMB à entrada SEC à ↑
+                                camino3: CONTàROMàRWàREG
+                                    dcamino3 = dCONT + dROM + tsetupRW =
+                                             = 60 + 80 + 50 = 190 ps
+
+
+
+                                                                            70
+                           60
+                                                                                 60          260
+                                                                       50
+                                                    80                 40
+
+
+
+
+                                                                                      dROM         = 80 ps
+
+                         Ejemplo                                                      dSUM
+                                                                                      dRAàbusA
+                                                                                                   = 260 ps
+                                                                                                   = 70 ps
+                                                                                      dbusA        = 60 ps
+                         O Camino crítico y frecuencia máxima:                        tsetupRW     = 50 ps
+                                                                                      tsetupbusW   = 40 ps
+                           camino1: CONTàROMàRAàbusAà+àbusWàREG                       dCONT        = 60 ps
+                                dcamino1 = 510 ps
+
+                                𝑇%&' > 510 𝑝𝑠 ⇒ 𝑓%&' < 1,96 𝐺𝐻𝑧
+
+
+
+
+                                                                            70
+                           60
+                                                                                 60          260
+                                                                       50
+                                                    80                 40
+
+
+
+
+Arquitectura y Organización de
+Computadores 2 - Teruel                                                                                          12
+

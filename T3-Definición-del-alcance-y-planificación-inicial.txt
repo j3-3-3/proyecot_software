@@ -1,0 +1,230 @@
+T3 - Deﬁnición del alcance y
+planiﬁcación inicial
+¿Qué vamos a hacer exactamente y hasta dónde?
+
+
+Proyecto Software
+Grado en Ingeniería Informática
+Escuela Politécnica de Teruel
+Universidad de Zaragoza
+¿Qué es el alcance de un proyecto?
+
+                El alcance deﬁne qué se incluye y qué se excluye del proyecto.
+
+
+El alcance de un proyecto deﬁne:                  El alcance no es:
+
+    ●   qué se va a construir,                     ●   una lista de ideas,
+    ●   qué no se va a construir,                  ●   ni una visión ideal del producto,
+    ●   y qué se espera entregar al ﬁnalizar el    ●   ni un deseo del cliente sin restricciones
+        proyecto.
+
+.
+                     Varios perﬁles de usuario (clientes, personal y
+                     administración), plazo de entrega ﬁjo y recursos
+                     limitados.
+
+
+Aplicación web       El alcance podría incluir:
+
+                           gestión de reservas,
+para la gestión de
+                      ●
+                      ●    gestión de turnos,
+
+reservas y turnos     ●    consulta de disponibilidad.
+
+
+de un pequeño        Y excluir explícitamente:
+
+
+gimnasio
+                      ●    pagos online,
+                      ●    app móvil,
+                      ●    integración con dispositivos externos.
+
+                     Deﬁnir el alcance implica aceptar que no todo cabe.
+Alcance deseado vs. alcance viable
+
+
+
+             El alcance deseado representa el producto ideal
+
+
+
+
+      El alcance viable representa lo que puede hacerse realmente.
+                     Alcance deseado:
+
+                      ●   reservas online,
+                      ●   pagos integrados,
+
+Aplicación web        ●
+                      ●
+                          cancelaciones automáticas,
+                          notiﬁcaciones,
+
+para la gestión de    ●
+                      ●
+                          informes,
+                          app móvil.
+reservas y turnos    Restricciones
+de un pequeño         ●   plazo cerrado,
+gimnasio              ●
+                      ●
+                          equipo reducido,
+                          sin presupuesto adicional.
+
+                     ¿Qué funcionalidades se eliminan?
+
+                     ¿Cuáles se reducen o simpliﬁcan?
+
+                     ¿Cuáles se posponen fuera del proyecto?
+Priorización de funcionalidades
+
+           Priorizar signiﬁca decidir qué aporta más valor con el menor coste.
+
+
+Priorizar implica decidir:                          Una mala priorización provoca:
+
+ ●    qué aporta más valor,                           ●   mucho trabajo con poco impacto,
+ ●    qué es imprescindible,                          ●   funcionalidades “bonitas” pero inútiles,
+ ●    qué puede esperar.                              ●   falta de un producto utilizable.
+
+
+
+
+                             La priorización no es técnica, es estratégica.
+                     Lista inicial de funcionalidades
+
+                      ●   alta de usuarios,
+                      ●   gestión de reservas,
+
+Aplicación web        ●
+                      ●
+                          cancelación de reservas,
+                          pagos online,
+
+para la gestión de    ●
+                      ●
+                          notiﬁcaciones por email,
+                          informes de uso.
+reservas y turnos    Clasiﬁcar cada funcionalidad en:
+de un pequeño         ●   imprescindibles,
+gimnasio              ●
+                      ●
+                          deseables,
+                          prescindibles.
+
+
+                     Imprevisto: Se reduce el plazo o se introduce una
+                     carga extra inesperada.
+Hitos y entregables
+
+Un proyecto no se controla por “sensaciones de avance”, sino mediante:
+
+ ●   hitos: puntos de control relevantes,
+ ●   entregables: evidencias concretas de progreso.
+
+Los hitos permiten:
+
+ ●   evaluar el estado real del proyecto,
+ ●   detectar desviaciones,
+ ●   tomar decisiones a tiempo.
+
+
+
+
+        Un hito sin entregable es irrelevante. Un entregable sin criterio es inútil.
+                     Deﬁnición de hitos intermedios
+
+                      ●   Se pide deﬁnir varios hitos para el proyecto del
+                          gimnasio
+
+Aplicación web       Análisis de cada hito
+
+para la gestión de    ●   Para cada uno, se pregunta:
+                           ○ ¿qué se podrá evaluar en ese punto?
+reservas y turnos          ○ ¿qué evidencia concreta habrá?
+
+de un pequeño              ○ ¿qué decisión permitiría tomar?.
+
+
+gimnasio
+Relación entre alcance, tiempo y coste
+
+En cualquier proyecto software existen al menos
+tres variables fundamentales:
+                                                       A
+ ●   Alcance: qué se va a construir.
+ ●   Tiempo: plazo disponible.
+ ●   Coste / recursos: personas, esfuerzo,
+     presupuesto.
+
+Estas variables no son independientes. Forman un
+sistema interrelacionado.
+
+                                                   T       C
+                     En el proyecto del gimnasio se establece que:
+
+                      ●   el plazo de entrega es inamovible (por ejemplo,
+                          inicio de temporada),
+
+Aplicación web        ●
+                      ●
+                          el equipo es reducido,
+                          no hay presupuesto adicional.
+
+para la gestión de   El tiempo, por tanto, queda ﬁjado.
+
+reservas y turnos    Ante esta situación, ¿qué opciones reales tiene el
+
+de un pequeño        proyecto?
+
+
+gimnasio
+Planiﬁcación inicial realista
+
+La planiﬁcación inicial no pretende:
+
+ ●   acertar todos los detalles,
+ ●   ni prever todos los problemas.
+
+Pretende:
+
+ ●   establecer un marco realista,
+ ●   identiﬁcar riesgos tempranos,
+ ●   y facilitar la toma de decisiones futuras.
+
+Una buena planiﬁcación inicial:
+
+ ●   asume incertidumbre,
+ ●   deja margen de ajuste,
+ ●   y se revisa periódicamente.
+                     Proyecto del gimnasio (primeras 3 semanas)
+
+                      ●   Semana 1
+                           ○ deﬁnición de alcance mínimo
+
+Aplicación web             ○ priorización inicial
+                           ○ conﬁguración básica del repositorio
+
+para la gestión de    ●   Semana 2
+                           ○ implementación reservas básicas
+reservas y turnos          ○ pruebas iniciales
+                      ●   Semana 3
+de un pequeño              ○ ajustes según problemas detectados
+
+gimnasio                   ○ revisión del plan
+Conclusión
+
+
+
+ Deﬁnir el alcance y planiﬁcar no limita el proyecto,lo hace viable y gobernable.
+
+
+
+
+     Si ya se ha deﬁnido qué se va a hacer y se ha planiﬁcado, ¿se puede
+                       conocer el esfuerzo necesario?
+

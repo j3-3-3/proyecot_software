@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/layout :: head('Entregas')}"></head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+<div th:replace="~{fragments/layout :: navbar}"></div>
+<div th:replace="~{fragments/layout :: messages}"></div>
+
+<main class="container my-4 flex-grow-1">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0 fw-bold">
+            <i class="bi bi-truck-front me-2 text-primary"></i>
+            <span th:text="${esAdmin} ? 'Todas las Entregas' : 'Mis Entregas'">Entregas</span>
+        </h2>
+    </div>
+
+    <div class="card border-0 shadow-sm">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Pedido</th>
+                            <th th:if="${esAdmin}">Repartidor</th>
+                            <th>Vehículo</th>
+                            <th>Fecha Prevista</th>
+                            <th>Estado</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:if="${#lists.isEmpty(entregas)}">
+                            <td th:colspan="${esAdmin} ? 7 : 6" class="text-center text-muted py-4">
+                                <i class="bi bi-inbox fs-2 d-block mb-2"></i>
+                                No hay entregas disponibles.
+                            </td>
+                        </tr>
+                        <tr th:each="e : ${entregas}">
+                            <td class="text-muted small" th:text="${e.id}">#</td>
+                            <td class="small">
+                                Pedido #<span th:text="${e.pedido.id}"></span>
+                                <div class="text-muted" th:text="${#strings.abbreviate(e.pedido.direccionEntrega, 35)}">-</div>
+                            </td>
+                            <td th:if="${esAdmin}" th:text="${e.repartidor != null} ? ${e.repartidor.nombreCompleto} : '-'">-</td>
+                            <td class="small" th:text="${e.vehiculo != null} ? ${e.vehiculo.descripcion} : '-'">-</td>
+                            <td class="small" th:text="${e.fechaEntregaPrevista != null} ? ${#temporals.format(e.fechaEntregaPrevista, 'dd/MM/yyyy')} : '-'">-</td>
+                            <td>
+                                <span class="badge"
+                                      th:classappend="${e.estado.name() == 'PENDIENTE'} ? 'text-bg-warning' :
+                                                     (${e.estado.name() == 'EN_REPARTO'} ? 'text-bg-primary' :
+                                                     (${e.estado.name() == 'ENTREGADO'} ? 'text-bg-success' :
+                                                     (${e.estado.name() == 'INCIDENCIA'} ? 'text-bg-danger' : 'text-bg-secondary')))"
+                                      th:text="${e.estado.label}">Estado</span>
+                            </td>
+                            <td class="text-center">
+                                <div class="btn-group btn-group-sm">
+                                    <a th:href="@{/entregas/{id}(id=${e.id})}" class="btn btn-outline-secondary" title="Ver detalle">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <a sec:authorize="hasRole('ADMIN')"
+                                       th:href="@{/entregas/{id}/asignar(id=${e.id})}" class="btn btn-outline-primary" title="Asignar">
+                                        <i class="bi bi-person-check"></i>
+                                    </a>
+                                    <a th:href="@{/entregas/{id}/estado(id=${e.id})}" class="btn btn-outline-success" title="Actualizar estado">
+                                        <i class="bi bi-arrow-repeat"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer text-muted small">
+            Total: <strong th:text="${#lists.size(entregas)}">0</strong> entregas
+        </div>
+    </div>
+</main>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

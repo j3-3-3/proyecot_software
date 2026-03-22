@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/layout :: head('Pedidos')}"></head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+<div th:replace="~{fragments/layout :: navbar}"></div>
+<div th:replace="~{fragments/layout :: messages}"></div>
+
+<main class="container my-4 flex-grow-1">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0 fw-bold">
+            <i class="bi bi-cart3 me-2 text-primary"></i>
+            <span th:text="${esAdmin} ? 'Todos los Pedidos' : 'Mis Pedidos'">Pedidos</span>
+        </h2>
+        <a sec:authorize="hasRole('CLIENTE')" th:href="@{/pedidos/nuevo}" class="btn btn-primary">
+            <i class="bi bi-cart-plus me-1"></i>Nuevo Pedido
+        </a>
+    </div>
+
+    <div class="card border-0 shadow-sm">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th th:if="${esAdmin}">Cliente</th>
+                            <th>Fecha</th>
+                            <th>Dirección</th>
+                            <th>Estado</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:if="${#lists.isEmpty(pedidos)}">
+                            <td th:colspan="${esAdmin} ? 6 : 5" class="text-center text-muted py-4">
+                                <i class="bi bi-inbox fs-2 d-block mb-2"></i>
+                                No hay pedidos disponibles.
+                            </td>
+                        </tr>
+                        <tr th:each="p : ${pedidos}">
+                            <td class="text-muted small" th:text="'#' + ${p.id}">#</td>
+                            <td th:if="${esAdmin}" th:text="${p.cliente.nombreCompleto}">Cliente</td>
+                            <td class="small" th:text="${#temporals.format(p.fechaPedido, 'dd/MM/yyyy HH:mm')}">Fecha</td>
+                            <td class="small" th:text="${#strings.abbreviate(p.direccionEntrega, 40)}">Dirección</td>
+                            <td>
+                                <span class="badge"
+                                      th:classappend="${p.estado.name() == 'PENDIENTE'} ? 'text-bg-warning' :
+                                                     (${p.estado.name() == 'EN_PREPARACION'} ? 'text-bg-info' :
+                                                     (${p.estado.name() == 'EN_REPARTO'} ? 'text-bg-primary' :
+                                                     (${p.estado.name() == 'ENTREGADO'} ? 'text-bg-success' : 'text-bg-danger')))"
+                                      th:text="${p.estado.label}">Estado</span>
+                            </td>
+                            <td class="text-center">
+                                <a th:href="@{/pedidos/{id}(id=${p.id})}" class="btn btn-sm btn-outline-secondary">
+                                    <i class="bi bi-eye me-1"></i>Ver
+                                </a>
+                                <span th:if="${p.estado.name() == 'PENDIENTE' or p.estado.name() == 'EN_PREPARACION'}">
+                                    <button class="btn btn-sm btn-outline-danger ms-1" type="button"
+                                            data-bs-toggle="modal" th:data-bs-target="'#cancelModal' + ${p.id}">
+                                        <i class="bi bi-x-circle me-1"></i>Cancelar
+                                    </button>
+                                    <div class="modal fade" th:id="'cancelModal' + ${p.id}" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Cancelar Pedido #<span th:text="${p.id}"></span></h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                </div>
+                                                <div class="modal-body">¿Está seguro de que desea cancelar este pedido?</div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                                    <form th:action="@{/pedidos/{id}/cancelar(id=${p.id})}" method="post">
+                                                        <button type="submit" class="btn btn-danger">Sí, cancelar</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer text-muted small">
+            Total: <strong th:text="${#lists.size(pedidos)}">0</strong> pedidos
+        </div>
+    </div>
+</main>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head(${esNuevo} ? 'Nuevo Producto' : 'Editar Producto')}"></head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+<div th:replace="~{fragments/layout :: navbar}"></div>
+<div th:replace="~{fragments/layout :: messages}"></div>
+
+<main class="container my-4 flex-grow-1">
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/inventario}">Inventario</a></li>
+            <li class="breadcrumb-item active" th:text="${esNuevo} ? 'Nuevo Producto' : 'Editar Producto'">Producto</li>
+        </ol>
+    </nav>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white border-bottom">
+                    <h4 class="mb-0 fw-bold">
+                        <i th:class="${esNuevo} ? 'bi bi-plus-circle text-primary me-2' : 'bi bi-pencil text-warning me-2'"></i>
+                        <span th:text="${esNuevo} ? 'Nuevo Producto' : 'Editar Producto'">Producto</span>
+                    </h4>
+                </div>
+                <div class="card-body p-4">
+                    <form th:action="${esNuevo} ? @{/inventario/nuevo} : @{/inventario/{id}/editar(id=${producto.id})}"
+                          th:object="${producto}" method="post" novalidate>
+
+                        <div class="row g-3">
+                            <div class="col-md-8">
+                                <label for="nombre" class="form-label fw-semibold">Nombre <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="nombre" th:field="*{nombre}"
+                                       th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid'"
+                                       placeholder="Nombre del producto">
+                                <div class="invalid-feedback" th:errors="*{nombre}"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="categoria" class="form-label fw-semibold">Categoría <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="categoria" th:field="*{categoria}"
+                                       th:classappend="${#fields.hasErrors('categoria')} ? 'is-invalid'"
+                                       list="categoriasList" placeholder="Categoría">
+                                <datalist id="categoriasList">
+                                    <option th:each="cat : ${categorias}" th:value="${cat}"></option>
+                                </datalist>
+                                <div class="invalid-feedback" th:errors="*{categoria}"></div>
+                            </div>
+                            <div class="col-12">
+                                <label for="descripcion" class="form-label fw-semibold">Descripción</label>
+                                <textarea class="form-control" id="descripcion" th:field="*{descripcion}"
+                                          rows="3" placeholder="Descripción detallada del producto..."></textarea>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="cantidadStock" class="form-label fw-semibold">Stock <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="cantidadStock" th:field="*{cantidadStock}"
+                                           th:classappend="${#fields.hasErrors('cantidadStock')} ? 'is-invalid'"
+                                           min="0" placeholder="0">
+                                    <span class="input-group-text">uds</span>
+                                    <div class="invalid-feedback" th:errors="*{cantidadStock}"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="precioUnitario" class="form-label fw-semibold">Precio Unitario <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="precioUnitario" th:field="*{precioUnitario}"
+                                           th:classappend="${#fields.hasErrors('precioUnitario')} ? 'is-invalid'"
+                                           min="0" step="0.01" placeholder="0.00">
+                                    <span class="input-group-text">€</span>
+                                    <div class="invalid-feedback" th:errors="*{precioUnitario}"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="ubicacion" class="form-label fw-semibold">Ubicación <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="ubicacion" th:field="*{ubicacion}"
+                                       placeholder="Almacén A - Estantería 1">
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+                        <div class="d-flex justify-content-between">
+                            <a th:href="@{/inventario}" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left me-1"></i>Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-save me-1"></i>
+                                <span th:text="${esNuevo} ? 'Crear Producto' : 'Guardar Cambios'">Guardar</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

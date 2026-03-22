@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/layout :: head('Detalle Pedido')}"></head>
+<body>
+<div class="app-wrapper">
+    <div th:replace="~{fragments/layout :: sidebar('pedidos')}"></div>
+    <div class="main-area">
+        <div th:replace="~{fragments/layout :: topbar('Detalle del Pedido')}"></div>
+        <main class="content">
+            <div th:replace="~{fragments/layout :: alerts}"></div>
+
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-7">
+                    <!-- Order info -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-white border-bottom fw-semibold">
+                            <i class="bi bi-clipboard-check me-2 text-primary"></i>
+                            Pedido #<span th:text="${pedido.id}">1</span>
+                        </div>
+                        <div class="card-body">
+                            <dl class="row mb-0">
+                                <dt class="col-sm-4 text-muted">Estado</dt>
+                                <dd class="col-sm-8">
+                                    <span class="badge"
+                                          th:classappend="'badge-estado-' + ${pedido.estado.name()}"
+                                          th:text="${pedido.estado.name().replace('_',' ')}">Estado</span>
+                                </dd>
+
+                                <dt class="col-sm-4 text-muted">Fecha solicitud</dt>
+                                <dd class="col-sm-8"
+                                    th:text="${#temporals.format(pedido.fechaSolicitud,'dd/MM/yyyy HH:mm')}">—</dd>
+
+                                <dt class="col-sm-4 text-muted">Dirección</dt>
+                                <dd class="col-sm-8" th:text="${pedido.direccionEntrega ?: '—'}">—</dd>
+
+                                <dt class="col-sm-4 text-muted">Observaciones</dt>
+                                <dd class="col-sm-8" th:text="${pedido.observaciones ?: '—'}">—</dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <!-- Products -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-white border-bottom fw-semibold">
+                            <i class="bi bi-boxes me-2 text-secondary"></i>Productos
+                        </div>
+                        <div class="card-body p-0">
+                            <table class="table mb-0">
+                                <thead class="table-light">
+                                <tr>
+                                    <th>Producto</th>
+                                    <th class="text-center">Cantidad</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="d : ${pedido.detalles}">
+                                    <td th:text="${d.producto.nombre}">Producto</td>
+                                    <td class="text-center" th:text="${d.cantidad}">1</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Delivery tracking -->
+                    <div class="card mb-4" th:if="${pedido.entrega != null}">
+                        <div class="card-header bg-white border-bottom fw-semibold">
+                            <i class="bi bi-truck me-2 text-primary"></i>Seguimiento de entrega
+                        </div>
+                        <div class="card-body">
+                            <dl class="row mb-3">
+                                <dt class="col-sm-5 text-muted">Estado entrega</dt>
+                                <dd class="col-sm-7">
+                                    <span class="badge"
+                                          th:classappend="'badge-estado-' + ${pedido.entrega.estado.name()}"
+                                          th:text="${pedido.entrega.estado.name().replace('_',' ')}">Estado</span>
+                                </dd>
+
+                                <dt class="col-sm-5 text-muted">Fecha prevista</dt>
+                                <dd class="col-sm-7" th:text="${pedido.entrega.fechaPrevista != null ? pedido.entrega.fechaPrevista : '—'}">—</dd>
+
+                                <dt class="col-sm-5 text-muted">Repartidor</dt>
+                                <dd class="col-sm-7" th:text="${pedido.entrega.repartidor != null ? pedido.entrega.repartidor.nombre : '—'}">—</dd>
+                            </dl>
+
+                            <!-- Status timeline -->
+                            <div class="d-flex align-items-center gap-1 small">
+                                <span th:each="est : ${ {'EN_PREPARACION','PENDIENTE','EN_REPARTO','ENTREGADO'} }"
+                                      class="badge flex-fill text-center py-2"
+                                      th:classappend="${est == pedido.entrega.estado.name()} ? 'bg-primary' : 'bg-light text-muted'"
+                                      th:text="${est.replace('_',' ')}">Estado</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="d-flex gap-2">
+                        <a th:href="@{/cliente/mis-pedidos}" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-left me-2"></i>Volver
+                        </a>
+                        <form th:action="@{/cliente/pedidos/{id}/cancelar(id=${pedido.id})}"
+                              method="post"
+                              th:if="${pedido.estado.name() == 'EN_PREPARACION'}"
+                              onsubmit="return confirm('¿Seguro que quieres cancelar este pedido?')">
+                            <button type="submit" class="btn btn-outline-danger">
+                                <i class="bi bi-x-circle me-2"></i>Cancelar pedido
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

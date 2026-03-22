@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/layout :: head('Pedidos')}"></head>
+<body>
+<div class="app-wrapper">
+    <div th:replace="~{fragments/layout :: sidebar('pedidos')}"></div>
+    <div class="main-area">
+        <div th:replace="~{fragments/layout :: topbar('Gestión de Pedidos')}"></div>
+        <main class="content">
+            <div th:replace="~{fragments/layout :: alerts}"></div>
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="fw-semibold mb-0">Todos los pedidos</h5>
+            </div>
+
+            <div class="card">
+                <div class="card-body p-0">
+                    <div th:if="${pedidos.isEmpty()}" class="text-center text-muted p-5">
+                        <i class="bi bi-clipboard-x fs-1"></i>
+                        <p class="mt-2">No hay pedidos registrados</p>
+                    </div>
+                    <div class="table-responsive" th:unless="${pedidos.isEmpty()}">
+                        <table class="table table-hover mb-0">
+                            <thead class="table-light">
+                            <tr>
+                                <th>#</th>
+                                <th>Cliente</th>
+                                <th>Fecha solicitud</th>
+                                <th>Dirección</th>
+                                <th>Productos</th>
+                                <th>Estado</th>
+                                <th class="text-end">Acciones</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="p : ${pedidos}">
+                                <td th:text="${p.id}">1</td>
+                                <td class="fw-semibold" th:text="${p.cliente.nombre}">Cliente</td>
+                                <td class="text-muted small"
+                                    th:text="${#temporals.format(p.fechaSolicitud,'dd/MM/yyyy HH:mm')}">fecha</td>
+                                <td th:text="${p.direccionEntrega ?: '—'}">—</td>
+                                <td>
+                                    <span class="badge bg-light text-dark border" th:text="${p.detalles.size()} + ' ítem(s)'">0</span>
+                                </td>
+                                <td>
+                                    <span class="badge"
+                                          th:classappend="'badge-estado-' + ${p.estado.name()}"
+                                          th:text="${p.estado.name().replace('_',' ')}">Estado</span>
+                                </td>
+                                <td class="text-end">
+                                    <form th:action="@{/admin/pedidos/{id}/cancelar(id=${p.id})}"
+                                          method="post"
+                                          th:if="${p.estado.name() != 'CANCELADO' && p.estado.name() != 'ENTREGADO'}"
+                                          onsubmit="return confirm('¿Cancelar este pedido?')">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                            <i class="bi bi-x-circle me-1"></i>Cancelar
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

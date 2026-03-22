@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/layout :: head('Producto')}"></head>
+<body>
+<div class="app-wrapper">
+    <div th:replace="~{fragments/layout :: sidebar('inventario')}"></div>
+    <div class="main-area">
+        <div th:replace="~{fragments/layout :: topbar('Producto')}"></div>
+        <main class="content">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="card">
+                        <div class="card-header bg-white border-bottom">
+                            <h6 class="mb-0 fw-semibold">
+                                <i class="bi bi-box me-2 text-primary"></i>
+                                <span th:if="${producto.id == null}">Nuevo producto</span>
+                                <span th:unless="${producto.id == null}">Editar producto</span>
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <form th:action="${producto.id == null} ? @{/admin/inventario/nuevo} : @{/admin/inventario/{id}/editar(id=${producto.id})}"
+                                  th:object="${producto}"
+                                  method="post">
+                                <div class="row g-3">
+                                    <div class="col-md-8">
+                                        <label class="form-label fw-semibold">Nombre <span class="text-danger">*</span></label>
+                                        <input type="text" th:field="*{nombre}" class="form-control"
+                                               th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid'" required>
+                                        <div class="invalid-feedback" th:errors="*{nombre}"></div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label fw-semibold">Categoría</label>
+                                        <input type="text" th:field="*{categoria}" class="form-control"
+                                               placeholder="Ej: Embalaje">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label fw-semibold">Descripción</label>
+                                        <textarea th:field="*{descripcion}" class="form-control" rows="2"
+                                                  placeholder="Descripción del producto"></textarea>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Ubicación en almacén</label>
+                                        <input type="text" th:field="*{ubicacion}" class="form-control"
+                                               placeholder="Ej: A-01">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Proveedor</label>
+                                        <input type="text" th:field="*{proveedor}" class="form-control"
+                                               placeholder="Nombre del proveedor">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Stock inicial <span class="text-danger">*</span></label>
+                                        <input type="number" th:field="*{stock}" class="form-control"
+                                               min="0" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Stock mínimo</label>
+                                        <input type="number" th:field="*{stockMinimo}" class="form-control" min="0">
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-2 mt-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="bi bi-save me-2"></i>Guardar
+                                    </button>
+                                    <a th:href="@{/admin/inventario}" class="btn btn-outline-secondary">
+                                        <i class="bi bi-arrow-left me-2"></i>Cancelar
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

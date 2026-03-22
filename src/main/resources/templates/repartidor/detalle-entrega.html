@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/layout :: head('Detalle Entrega')}"></head>
+<body>
+<div class="app-wrapper">
+    <div th:replace="~{fragments/layout :: sidebar('entregas')}"></div>
+    <div class="main-area">
+        <div th:replace="~{fragments/layout :: topbar('Detalle de Entrega')}"></div>
+        <main class="content">
+            <div th:replace="~{fragments/layout :: alerts}"></div>
+
+            <div class="row g-4">
+                <!-- Delivery details -->
+                <div class="col-lg-5">
+                    <div class="card mb-4">
+                        <div class="card-header bg-white border-bottom fw-semibold">
+                            <i class="bi bi-info-circle me-2 text-primary"></i>Información de la entrega
+                        </div>
+                        <div class="card-body">
+                            <dl class="row mb-0">
+                                <dt class="col-sm-5 text-muted">Entrega #</dt>
+                                <dd class="col-sm-7" th:text="${entrega.id}">1</dd>
+
+                                <dt class="col-sm-5 text-muted">Cliente</dt>
+                                <dd class="col-sm-7 fw-semibold" th:text="${entrega.pedido.cliente.nombre}">—</dd>
+
+                                <dt class="col-sm-5 text-muted">Dirección</dt>
+                                <dd class="col-sm-7" th:text="${entrega.pedido.direccionEntrega ?: '—'}">—</dd>
+
+                                <dt class="col-sm-5 text-muted">Vehículo</dt>
+                                <dd class="col-sm-7" th:text="${entrega.vehiculo != null ? entrega.vehiculo.matricula + ' — ' + entrega.vehiculo.marca : '—'}">—</dd>
+
+                                <dt class="col-sm-5 text-muted">Fecha prevista</dt>
+                                <dd class="col-sm-7" th:text="${entrega.fechaPrevista != null ? entrega.fechaPrevista : '—'}">—</dd>
+
+                                <dt class="col-sm-5 text-muted">Estado actual</dt>
+                                <dd class="col-sm-7">
+                                    <span class="badge"
+                                          th:classappend="'badge-estado-' + ${entrega.estado.name()}"
+                                          th:text="${entrega.estado.name().replace('_',' ')}">Estado</span>
+                                </dd>
+
+                                <dt class="col-sm-5 text-muted">Última actualización</dt>
+                                <dd class="col-sm-7 small text-muted"
+                                    th:text="${#temporals.format(entrega.fechaActualizacion,'dd/MM/yyyy HH:mm')}">—</dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <!-- Products in the order -->
+                    <div class="card">
+                        <div class="card-header bg-white border-bottom fw-semibold">
+                            <i class="bi bi-box me-2 text-secondary"></i>Productos del pedido
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between" th:each="d : ${entrega.pedido.detalles}">
+                                <span th:text="${d.producto.nombre}">Producto</span>
+                                <span class="badge bg-secondary" th:text="'×' + ${d.cantidad}">0</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Update status form -->
+                <div class="col-lg-7">
+                    <div class="card">
+                        <div class="card-header bg-white border-bottom fw-semibold">
+                            <i class="bi bi-arrow-repeat me-2 text-success"></i>Actualizar estado
+                        </div>
+                        <div class="card-body"
+                             th:if="${entrega.estado.name() != 'ENTREGADO' && entrega.estado.name() != 'CANCELADO'}">
+                            <form th:action="@{/repartidor/entregas/{id}/actualizar-estado(id=${entrega.id})}" method="post">
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Nuevo estado <span class="text-danger">*</span></label>
+                                    <select name="nuevoEstado" class="form-select" required>
+                                        <option value="">-- Seleccionar estado --</option>
+                                        <option th:each="est : ${estadosDisponibles}"
+                                                th:value="${est.name()}"
+                                                th:text="${est.name().replace('_',' ')}"
+                                                th:selected="${est == entrega.estado}">
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label fw-semibold">Observaciones</label>
+                                    <textarea name="observaciones" class="form-control" rows="3"
+                                              placeholder="Descripción del estado actual..."
+                                              th:text="${entrega.observaciones}"></textarea>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="bi bi-check-circle me-2"></i>Actualizar
+                                    </button>
+                                    <a th:href="@{/repartidor/mis-entregas}" class="btn btn-outline-secondary">
+                                        <i class="bi bi-arrow-left me-2"></i>Volver
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-body text-center text-muted"
+                             th:unless="${entrega.estado.name() != 'ENTREGADO' && entrega.estado.name() != 'CANCELADO'}">
+                            <i class="bi bi-check-circle-fill text-success fs-3"></i>
+                            <p class="mt-2">Esta entrega está finalizada</p>
+                            <a th:href="@{/repartidor/mis-entregas}" class="btn btn-outline-secondary btn-sm">
+                                <i class="bi bi-arrow-left me-1"></i>Volver
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

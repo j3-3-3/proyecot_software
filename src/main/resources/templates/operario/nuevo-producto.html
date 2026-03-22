@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/layout :: head('Nuevo Producto')}"></head>
+<body>
+<div class="app-wrapper">
+    <div th:replace="~{fragments/layout :: sidebar('nuevo-producto')}"></div>
+    <div class="main-area">
+        <div th:replace="~{fragments/layout :: topbar('Nuevo Producto')}"></div>
+        <main class="content">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="card">
+                        <div class="card-header bg-white border-bottom">
+                            <h6 class="mb-0 fw-semibold">
+                                <i class="bi bi-plus-square me-2 text-primary"></i>Registrar nuevo producto
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <form th:action="@{/operario/nuevo-producto}" th:object="${producto}" method="post">
+                                <div class="row g-3">
+                                    <div class="col-md-8">
+                                        <label class="form-label fw-semibold">Nombre <span class="text-danger">*</span></label>
+                                        <input type="text" th:field="*{nombre}" class="form-control"
+                                               th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid'" required>
+                                        <div class="invalid-feedback" th:errors="*{nombre}"></div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label fw-semibold">Categoría</label>
+                                        <input type="text" th:field="*{categoria}" class="form-control" placeholder="Embalaje">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label fw-semibold">Descripción</label>
+                                        <textarea th:field="*{descripcion}" class="form-control" rows="2"></textarea>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Ubicación</label>
+                                        <input type="text" th:field="*{ubicacion}" class="form-control" placeholder="A-01">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Proveedor</label>
+                                        <input type="text" th:field="*{proveedor}" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Stock inicial</label>
+                                        <input type="number" th:field="*{stock}" class="form-control" min="0">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Stock mínimo</label>
+                                        <input type="number" th:field="*{stockMinimo}" class="form-control" min="0">
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-2 mt-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="bi bi-save me-2"></i>Guardar
+                                    </button>
+                                    <a th:href="@{/operario/inventario}" class="btn btn-outline-secondary">
+                                        <i class="bi bi-arrow-left me-2"></i>Cancelar
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

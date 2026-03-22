@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/layout :: head('Operario — Dashboard')}"></head>
+<body>
+<div class="app-wrapper">
+    <div th:replace="~{fragments/layout :: sidebar('dashboard')}"></div>
+    <div class="main-area">
+        <div th:replace="~{fragments/layout :: topbar('Mi Panel')}" ></div>
+        <main class="content">
+            <div th:replace="~{fragments/layout :: alerts}"></div>
+
+            <!-- Stats -->
+            <div class="row g-4 mb-4">
+                <div class="col-sm-6 col-xl-4">
+                    <div class="card stat-card h-100">
+                        <div class="card-body d-flex align-items-center gap-3">
+                            <div class="stat-icon bg-primary bg-opacity-10 text-primary">
+                                <i class="bi bi-boxes"></i>
+                            </div>
+                            <div>
+                                <div class="text-muted small">Total productos</div>
+                                <div class="fs-3 fw-bold" th:text="${totalProductos}">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-4">
+                    <div class="card stat-card h-100">
+                        <div class="card-body d-flex align-items-center gap-3">
+                            <div class="stat-icon bg-warning bg-opacity-10 text-warning">
+                                <i class="bi bi-exclamation-triangle"></i>
+                            </div>
+                            <div>
+                                <div class="text-muted small">Stock bajo</div>
+                                <div class="fs-3 fw-bold" th:text="${productosBajoStock.size()}">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Low stock alert -->
+                <div class="col-lg-5">
+                    <div class="card">
+                        <div class="card-header bg-white border-bottom fw-semibold">
+                            <i class="bi bi-exclamation-triangle text-warning me-2"></i>Productos con stock bajo
+                        </div>
+                        <div class="card-body p-0">
+                            <div th:if="${productosBajoStock.isEmpty()}" class="text-center text-muted p-4">
+                                <i class="bi bi-check-circle text-success fs-3"></i>
+                                <p class="mt-2 mb-0">Todo en orden</p>
+                            </div>
+                            <ul class="list-group list-group-flush" th:unless="${productosBajoStock.isEmpty()}">
+                                <li class="list-group-item d-flex align-items-center" th:each="p : ${productosBajoStock}">
+                                    <div class="flex-grow-1">
+                                        <div class="fw-semibold" th:text="${p.nombre}">Producto</div>
+                                        <small class="text-muted" th:text="${p.ubicacion}"></small>
+                                    </div>
+                                    <span class="badge bg-danger" th:text="${p.stock}">0</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent movements -->
+                <div class="col-lg-7">
+                    <div class="card">
+                        <div class="card-header bg-white border-bottom fw-semibold">
+                            <i class="bi bi-clock-history me-2"></i>Últimos movimientos
+                        </div>
+                        <div class="card-body p-0">
+                            <div th:if="${ultimosMovimientos.isEmpty()}" class="text-center text-muted p-4">
+                                <p class="mb-0">Sin movimientos recientes</p>
+                            </div>
+                            <ul class="list-group list-group-flush" th:unless="${ultimosMovimientos.isEmpty()}">
+                                <li class="list-group-item" th:each="m : ${ultimosMovimientos}">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-grow-1">
+                                            <div class="fw-semibold" th:text="${m.producto.nombre}">Producto</div>
+                                            <small class="text-muted"
+                                                   th:text="${#temporals.format(m.fecha,'dd/MM HH:mm')}">fecha</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <span th:classappend="${m.tipo == 'ENTRADA'} ? 'text-success' : 'text-warning'"
+                                                  th:text="${m.tipo == 'ENTRADA'} ? '+' + ${m.cantidad} : m.tipo">0</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick access -->
+            <div class="row g-3 mt-2">
+                <div class="col-12">
+                    <h6 class="text-muted small text-uppercase">Acciones rápidas</h6>
+                </div>
+                <div class="col-sm-4">
+                    <a th:href="@{/operario/entrada-producto}" class="btn btn-outline-success w-100 py-3">
+                        <i class="bi bi-box-arrow-in-down d-block fs-4 mb-1"></i>
+                        Registrar entrada
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a th:href="@{/operario/inventario}" class="btn btn-outline-primary w-100 py-3">
+                        <i class="bi bi-list-ul d-block fs-4 mb-1"></i>
+                        Ver inventario
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    <a th:href="@{/operario/nuevo-producto}" class="btn btn-outline-secondary w-100 py-3">
+                        <i class="bi bi-plus-circle d-block fs-4 mb-1"></i>
+                        Nuevo producto
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

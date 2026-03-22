@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/layout :: head('Nuevo Empleado')}"></head>
+<body>
+<div class="app-wrapper">
+    <div th:replace="~{fragments/layout :: sidebar('empleados')}"></div>
+    <div class="main-area">
+        <div th:replace="~{fragments/layout :: topbar('Registrar Empleado')}"></div>
+        <main class="content">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header bg-white border-bottom">
+                            <h6 class="mb-0 fw-semibold">
+                                <i class="bi bi-person-plus me-2 text-primary"></i>Nuevo empleado
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <form th:action="@{/admin/empleados/nuevo}" method="post">
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Nombre completo <span class="text-danger">*</span></label>
+                                    <input type="text" name="nombre" class="form-control"
+                                           placeholder="Ej: Juan García" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Nombre de usuario <span class="text-danger">*</span></label>
+                                    <input type="text" name="username" class="form-control"
+                                           placeholder="Ej: jgarcia" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Email</label>
+                                    <input type="email" name="email" class="form-control"
+                                           placeholder="ejemplo@empresa.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Contraseña <span class="text-danger">*</span></label>
+                                    <input type="password" name="password" class="form-control"
+                                           placeholder="Mínimo 8 caracteres" minlength="8" required>
+                                    <div class="form-text">Mínimo 8 caracteres, una mayúscula y un número.</div>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label fw-semibold">Rol <span class="text-danger">*</span></label>
+                                    <select name="rol" class="form-select" required>
+                                        <option value="">-- Seleccionar rol --</option>
+                                        <option value="OPERARIO">Operario</option>
+                                        <option value="REPARTIDOR">Repartidor</option>
+                                        <option value="ADMIN">Administrador</option>
+                                    </select>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="bi bi-save me-2"></i>Registrar
+                                    </button>
+                                    <a th:href="@{/admin/empleados}" class="btn btn-outline-secondary">
+                                        <i class="bi bi-arrow-left me-2"></i>Cancelar
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

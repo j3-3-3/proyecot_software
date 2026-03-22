@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/layout :: head('Entregas')}"></head>
+<body>
+<div class="app-wrapper">
+    <div th:replace="~{fragments/layout :: sidebar('entregas')}"></div>
+    <div class="main-area">
+        <div th:replace="~{fragments/layout :: topbar('Gestión de Entregas')}"></div>
+        <main class="content">
+            <div th:replace="~{fragments/layout :: alerts}"></div>
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="fw-semibold mb-0">Entregas</h5>
+                <a th:href="@{/admin/entregas/nueva}" class="btn btn-primary">
+                    <i class="bi bi-plus-circle me-2"></i>Nueva entrega
+                </a>
+            </div>
+
+            <div class="card">
+                <div class="card-body p-0">
+                    <div th:if="${entregas.isEmpty()}" class="text-center text-muted p-5">
+                        <i class="bi bi-truck fs-1"></i>
+                        <p class="mt-2">No hay entregas registradas</p>
+                    </div>
+                    <div class="table-responsive" th:unless="${entregas.isEmpty()}">
+                        <table class="table table-hover mb-0">
+                            <thead class="table-light">
+                            <tr>
+                                <th>#</th>
+                                <th>Pedido</th>
+                                <th>Repartidor</th>
+                                <th>Vehículo</th>
+                                <th>Fecha prevista</th>
+                                <th>Estado</th>
+                                <th class="text-end">Acciones</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="e : ${entregas}">
+                                <td th:text="${e.id}">1</td>
+                                <td>
+                                    <span class="badge bg-secondary" th:text="'Pedido #' + ${e.pedido.id}">Pedido</span>
+                                </td>
+                                <td th:text="${e.repartidor != null ? e.repartidor.nombre : '—'}">—</td>
+                                <td th:text="${e.vehiculo != null ? e.vehiculo.matricula : '—'}">—</td>
+                                <td th:text="${e.fechaPrevista != null ? e.fechaPrevista : '—'}">—</td>
+                                <td>
+                                    <span class="badge"
+                                          th:classappend="'badge-estado-' + ${e.estado.name()}"
+                                          th:text="${e.estado.name().replace('_',' ')}">Estado</span>
+                                </td>
+                                <td class="text-end">
+                                    <div class="d-flex gap-1 justify-content-end">
+                                        <!-- Assign repartidor modal trigger -->
+                                        <button class="btn btn-sm btn-outline-primary"
+                                                data-bs-toggle="modal"
+                                                th:data-bs-target="'#modalRepartidor' + ${e.id}"
+                                                title="Asignar repartidor">
+                                            <i class="bi bi-person-check"></i>
+                                        </button>
+                                        <!-- Assign vehicle modal trigger -->
+                                        <button class="btn btn-sm btn-outline-secondary"
+                                                data-bs-toggle="modal"
+                                                th:data-bs-target="'#modalVehiculo' + ${e.id}"
+                                                title="Asignar vehículo">
+                                            <i class="bi bi-truck"></i>
+                                        </button>
+                                        <!-- Change date modal trigger -->
+                                        <button class="btn btn-sm btn-outline-warning"
+                                                data-bs-toggle="modal"
+                                                th:data-bs-target="'#modalFecha' + ${e.id}"
+                                                title="Modificar fecha">
+                                            <i class="bi bi-calendar-check"></i>
+                                        </button>
+                                        <!-- Cancel -->
+                                        <form th:action="@{/admin/entregas/{id}/cancelar(id=${e.id})}"
+                                              method="post"
+                                              th:if="${e.estado.name() != 'CANCELADO' && e.estado.name() != 'ENTREGADO'}"
+                                              onsubmit="return confirm('¿Cancelar esta entrega?')">
+                                            <button type="submit" class="btn btn-sm btn-outline-danger" title="Cancelar">
+                                                <i class="bi bi-x-circle"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modals for each delivery -->
+            <div th:each="e : ${entregas}">
+                <!-- Assign Repartidor Modal -->
+                <div class="modal fade" th:id="'modalRepartidor' + ${e.id}" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Asignar repartidor — Entrega #<span th:text="${e.id}"></span></h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <form th:action="@{/admin/entregas/{id}/asignar-repartidor(id=${e.id})}" method="post">
+                                <div class="modal-body">
+                                    <label class="form-label fw-semibold">Repartidor</label>
+                                    <select name="repartidorId" class="form-select" required>
+                                        <option value="">-- Seleccionar --</option>
+                                        <option th:each="r : ${repartidores}"
+                                                th:value="${r.id}"
+                                                th:text="${r.nombre}"
+                                                th:selected="${e.repartidor != null && e.repartidor.id == r.id}">
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary">Asignar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assign Vehicle Modal -->
+                <div class="modal fade" th:id="'modalVehiculo' + ${e.id}" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Asignar vehículo — Entrega #<span th:text="${e.id}"></span></h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <form th:action="@{/admin/entregas/{id}/asignar-vehiculo(id=${e.id})}" method="post">
+                                <div class="modal-body">
+                                    <label class="form-label fw-semibold">Vehículo disponible</label>
+                                    <select name="vehiculoId" class="form-select" required>
+                                        <option value="">-- Seleccionar --</option>
+                                        <option th:each="v : ${vehiculos}"
+                                                th:value="${v.id}"
+                                                th:text="${v.matricula} + ' — ' + ${v.marca} + ' ' + ${v.modelo}"
+                                                th:selected="${e.vehiculo != null && e.vehiculo.id == v.id}">
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary">Asignar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Change Date Modal -->
+                <div class="modal fade" th:id="'modalFecha' + ${e.id}" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Modificar fecha — Entrega #<span th:text="${e.id}"></span></h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <form th:action="@{/admin/entregas/{id}/modificar-fecha(id=${e.id})}" method="post">
+                                <div class="modal-body">
+                                    <label class="form-label fw-semibold">Nueva fecha prevista</label>
+                                    <input type="date" name="nuevaFecha" class="form-control"
+                                           th:value="${e.fechaPrevista}" required>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-warning">Modificar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

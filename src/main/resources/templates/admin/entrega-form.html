@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/layout :: head('Nueva Entrega')}"></head>
+<body>
+<div class="app-wrapper">
+    <div th:replace="~{fragments/layout :: sidebar('entregas')}"></div>
+    <div class="main-area">
+        <div th:replace="~{fragments/layout :: topbar('Nueva Entrega')}"></div>
+        <main class="content">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header bg-white border-bottom">
+                            <h6 class="mb-0 fw-semibold">
+                                <i class="bi bi-truck me-2 text-primary"></i>Crear nueva entrega
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <form th:action="@{/admin/entregas/nueva}" method="post">
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Pedido <span class="text-danger">*</span></label>
+                                    <select name="pedidoId" class="form-select" required>
+                                        <option value="">-- Seleccionar pedido --</option>
+                                        <option th:each="p : ${pedidos}"
+                                                th:value="${p.id}"
+                                                th:text="'Pedido #' + ${p.id} + ' — ' + ${p.cliente.nombre}">
+                                        </option>
+                                    </select>
+                                    <div class="form-text">Solo se muestran pedidos sin entrega asignada.</div>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label fw-semibold">Fecha prevista de entrega <span class="text-danger">*</span></label>
+                                    <input type="date" name="fechaPrevista" class="form-control" required>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="bi bi-plus-circle me-2"></i>Crear entrega
+                                    </button>
+                                    <a th:href="@{/admin/entregas}" class="btn btn-outline-secondary">
+                                        <i class="bi bi-arrow-left me-2"></i>Cancelar
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

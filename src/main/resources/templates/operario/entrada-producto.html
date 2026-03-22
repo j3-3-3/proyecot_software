@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/layout :: head('Registrar Entrada')}"></head>
+<body>
+<div class="app-wrapper">
+    <div th:replace="~{fragments/layout :: sidebar('entrada')}"></div>
+    <div class="main-area">
+        <div th:replace="~{fragments/layout :: topbar('Registrar Entrada de Producto')}"></div>
+        <main class="content">
+            <div th:replace="~{fragments/layout :: alerts}"></div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="card">
+                        <div class="card-header bg-white border-bottom">
+                            <h6 class="mb-0 fw-semibold">
+                                <i class="bi bi-box-arrow-in-down me-2 text-success"></i>
+                                Registrar entrada de producto
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <form th:action="@{/operario/entrada-producto}" method="post">
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Producto <span class="text-danger">*</span></label>
+                                    <select name="productoId" class="form-select" required>
+                                        <option value="">-- Seleccionar producto --</option>
+                                        <option th:each="p : ${productos}"
+                                                th:value="${p.id}"
+                                                th:text="${p.nombre} + ' (Stock actual: ' + ${p.stock} + ')'">
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="row g-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Cantidad <span class="text-danger">*</span></label>
+                                        <input type="number" name="cantidad" class="form-control"
+                                               min="1" placeholder="Ej: 50" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Número de lote</label>
+                                        <input type="text" name="lote" class="form-control"
+                                               placeholder="Ej: LOT-2024-001">
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label fw-semibold">Motivo / Notas</label>
+                                    <textarea name="motivo" class="form-control" rows="2"
+                                              placeholder="Descripción de la entrada..."></textarea>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="bi bi-check-circle me-2"></i>Registrar entrada
+                                    </button>
+                                    <a th:href="@{/operario/inventario}" class="btn btn-outline-secondary">
+                                        <i class="bi bi-arrow-left me-2"></i>Cancelar
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

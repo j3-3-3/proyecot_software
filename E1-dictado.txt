@@ -1,0 +1,124 @@
+riesgos inciales y supuestos
+ identificaion de 2*3 riesgos inciales:
+	tecnicos,prganizativos o de alcance
+ supuests dobre los que se basa el planteamiento:
+	disponiblidad de tiempo
+	estabilidad de alcance
+	herramientas previstas
+no se espera un anilisi formal de riesgos
+si se espera conciencia de que el proyecto *no esta extento de incertidumbre*
+
+¿uqe no se espera en este entregable?
+codigo
+diagramas uml
+decisiones tecnicas profundas
+ni metricas de seguimiento
+
+coherencia con lo trabajado en clase
+esta etructura:
+	encaja directamente con T1
+	aplica T2
+	materializa T3
+
+ademas:
+perapra de forma natural el hito2
+y permite detectar desde el principio proyectos mal planteados
+
+DESCRIPCIÓN GENERAL DEL PROYECTO
+
+¿Qué es el proyecto y qué problema estamos intentando resolver?
+Descripción breve del  producto o sistema a desarrollar
+Contexto del proyecto
+Objetivo principal del proyecto
+
+criterio implícito
+que el proyecto se entienda sin explicaciones orales
+que no sea una lista de funcionalidades sino una visión clara
+
+
+DEFINICIÓN INICIAL DEL ALCANCE
+
+¿Qué entra y que no entra?
+Alcance funcional inicial:
+qué funcionalidades forman parte del proyecto
+a nivel conceptual , no técnico
+
+exclusiones explícitas:
+que se deja fuera desde el inicio
+aunque pudiera parecer “interesante” o “natural”
+
+Criterio implícito:
+Que el alcance sea realista para:
+dos personas
+el tiempo disponible
+y los hitos definidos
+Que se note que se ha trabajado la idea de alcance viable vs deseado
+
+ENFOQUE DE TRABAJO Y ORGANIZACIÓN
+
+¿Cómo se va a trabajar?
+Descripción del enfoque general:
+iterativo, por fases, híbrido, etc.
+Justificación del enfoque elegido en función del proyecto
+Organización básica del trabajo
+cómo se dividirá el trabajo
+cómo se coordina el equipo
+cómo se revisará el progreso
+
+¿Qué no se espera?
+aplicar formalmente Scrum o kanban
+describir roles o ceremonias completas
+
+¿Qué SÍ se espera?
+que el enfoque tenga sentido y esté razonado
+
+¿Cómo se estructura el tiempo?
+identificación de los hitos principales del proyecto
+alineados con los hitos de la asignatura
+Planificación temporal aproximada
+Por semanas o bloques
+sin entrar en tareas detalladas
+Relación entre hitos y entregables
+qué se podrá evaluar en cada punto
+Criterio implícito
+que la planificación sea creíble
+que se note que se entiende que planificar no es adivinar, sino prepararse para decidir
+
+¿Por qué este proyecto y este enfoque?
+Justificación del proyecto elegido
+Por interes, complejidad, adecuación a la asignatura
+Justificación del alcance inicial
+Por qué se considera viable
+Justificación del enfoque de trabajo
+por que se adapta al proyecto concreto
+No se evalúa si la decisión es “la mejor”, se evalúa si está bien razonada
+
+RIESGOS INICIALES Y SUPUESTOS (opcional)
+
+Identificación de 2-3 iniciales:
+técnicos, organizativos, o de alcance
+Supuestos sobre los que se basa el planteamiento:
+disponibilidad de tiempo
+estabilidade del alcance
+herramientas previstas
+
+No se espera un análisis formal de riesgos
+Sí se espera conciencia de que el proyecto no está exento de incertidumbre
+
+¿Qué no se espera en E1?
+
+código
+diagramas UML detallados
+decisiones técnicas profundas
+documentación extensa
+ni métricas de seguimiento
+Este hito evalúa el planteamiento, no la ejecución
+
+Esta estructura:
+encaja directamente con T1
+aplica con T2
+materializa con T3
+
+Además:
+prepara de forma natural el HITO 2 (estimación, cronograma y riesgos
+y permite detectar desde el principio proyectos mal planteados

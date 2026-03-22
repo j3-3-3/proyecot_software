@@ -1,0 +1,138 @@
+ E1. Planteamiento Inicial y Planificación
+                 Alejandro Périz / Jorge Jiménez
+
+
+1. DESCRIPCIÓN GENERAL DEL PROYECTO
+¿Qué es el proyecto y qué problema estamos intentando resolver?
+
+El proyecto consiste en el desarrollo de una solución web centralizada para gestionar el flujo
+logístico de una pequeña empresa de transporte y almacenamiento. Actualmente, esta
+empresa gestiona sus procesos mediante herramientas manuales y desconectadas, lo que
+provoca errores continuos de gestión de los productos.
+
+El sistema unificará las tres áreas críticas del negocio: gestión de inventario en almacén,
+procesamiento de pedidos de clientes y seguimiento básico de entregas.
+
+
+
+
+Objetivo principal
+
+Demostrar que es posible digitalizar un proceso manual crítico reduciendo los errores de
+stock y mejorando la visibilidad del estado de los pedidos, cumpliendo con las restricciones
+de tiempo y recursos de la asignatura; y que tenga una interfaz intuitiva para usuarios
+generales.
+2. DEFINICIÓN INICIAL DEL ALCANCE
+Siguiendo el principio de alcance viable vs. alcance deseado, hemos acotado la visión
+ideal del documento original para ajustarla a la capacidad real de un equipo de dos
+personas en el plazo dado.
+
+Alcance funcional inicial
+
+El proyecto se centrará en el ciclo de vida lineal del producto:
+
+   1.​ Gestión de Inventario: Registro de entradas de mercancía, categorización básica y
+       visualización de stock en tiempo real por parte de los operarios.
+   2.​ Gestión de Pedidos: Capacidad del administrador para crear órdenes de entrega,
+       ya sean desde 0, o aprobando los pedidos de los clientes; reservando el stock de
+       dichos productos automáticamente.
+   3.​ Seguimiento de Entregas: Un flujo de estados para el seguimiento de los
+       productos durante las entregas.
+   4.​ Roles diferenciados: Implementación de seguridad básica para segregar las
+       acciones de Administradores, Operarios y Repartidores.
+   5.​ Entorno del proyecto: Se desarrollará una aplicación web orientada a PC para los
+       administradores y operarios, y una aplicación para navegador móvil para los
+       repartidores.
+
+Exclusiones explícitas
+
+Para mitigar riesgos y asegurar el plazo de entrega, excluimos por el momento varias
+funcionalidades no esenciales.
+
+   ●​ Gestión de mantenimiento de vehículos: No se gestionarán plazos de ITV ni
+      revisiones mecánicas, ya que no aporta valor al núcleo problema.
+   ●​ Optimización de rutas y GPS en tiempo real: No se implementarán algoritmos de
+      rutas ni seguimiento en mapa en tiempo real; el seguimiento será por cambios de
+      estado lógico.
+   ●​ Pasarela de pagos real: La gestión económica se omitirá, haciendo que los clientes
+      puedan solicitar pedidos sin la necesidad de pagar por los productos.
+   ●​ App nativa móvil: Se desarrollará una única aplicación web desde navegadores
+      móviles para los repartidores, evitando el coste de desarrollar con varias
+      tecnologías. Por tiempo también se recortará la versión para navegador móvil para
+      los administradores y repartidores.
+3. ENFOQUE DE TRABAJO Y ORGANIZACIÓN
+¿Cómo se va a trabajar?
+
+Adoptaremos un enfoque iterativo e incremental. Ya que dado que el alcance inicial no
+está cerrado al 100% y es probable que surjan dependencias no previstas durante el
+desarrollo, un enfoque en cascadasería demasiado rígido y arriesgado. Trabajar por
+iteraciones nos permitirá tener una versión funcional mínima muy pronto y refinarla.
+
+Organización básica del trabajo
+   ●​ División del trabajo: En lugar de dividir el trabajo por capas (uno hace frontend,
+      otro backend), dividiremos por funcionalidad vertical.
+
+   ●​ Definición de roles: Los roles elegidos para cada uno de los integrantes del equipo
+      son los siguientes:
+
+          ○​ Alejandro: Diseñador, debido a que fue el que planteó el documento inicial
+             del proyecto.
+
+          ○​ Jorge: Desarrollador, debido a su mayor conocimiento de las tecnologías que
+             se van a emplear.
+
+   ●​ Repositorio compartido en Git y Google Drive y como punto central de verdad.
+
+
+4. ESTRUCTURA DEL TIEMPO
+La planificación se estructura en tres grandes bloques temporales alineados con las
+entregas de la asignatura.
+   ●​ Bloque 1: Núcleo y Datos (Semanas 1-4)
+          ○​ Objetivo: Tener la base de datos operativa y el ABM (Alta, Baja, Modificación)
+             de productos y usuarios.
+          ○​ Entregable interno: Un operario puede loguearse y crear un producto en el
+             sistema.
+          ○​ Hito: Validación de la arquitectura base.
+   ●​ Bloque 2: Lógica de Negocio y Flujo (Semanas 5-9)
+          ○​ Objetivo: Conectar las piezas. Que un pedido reste stock y genere una
+             entrega.
+          ○​ Entregable interno: Ciclo completo de un pedido (desde solicitud hasta ser
+             entregado).
+          ○​ Hito: Prototipo funcional.(De principio a fin)
+   ●​ Bloque 3: Refinamiento e Interfaz (Semanas 10-13)
+          ○​ Objetivo: Mejorar la usabilidad y manejo de errores.
+          ○​ Entregable: Interfaz responsive para repartidores y validaciones robustas.
+          ○​ Hito: Entrega final y defensa.
+5. ¿POR QUÉ ESTE PROYECTO Y ESTE ENFOQUE?
+Justificación del proyecto
+
+De los 2 proyectos planteados era el más asequible de desarrollar.
+
+Justificación de la viabilidad
+
+El alcance se ha diseñado aplicando restricciones. Al eliminar la complejidad algorítmica
+como rutas y de hardware como GPS y lectores físicos, el proyecto se reduce a un
+problema de gestión de estados y datos, lo cual es perfectamente asumible por dos
+personas en el tiempo dado.
+
+Justificación del enfoque
+
+El enfoque iterativo es el único que nos permite gestionar la incertidumbre de la asignatura.
+Si en la semana 6 descubrimos que la gestión de stock es más compleja de lo previsto,
+podremos simplificar la parte de informes sin comprometer la entrega final, algo que un
+enfoque rígido no permitiría.
+
+
+6. RIESGOS INICIALES Y SUPUESTOS
+No esperamos que todo salga perfecto, por lo que identificamos los siguientes riesgos
+iniciales:
+   1.​ Riesgo de Alcance: Tendencia a querer añadir "funcionalidades bonitas" no
+       esenciales antes de terminar lo básico.
+   2.​ Riesgo Técnico: Si utilizamos un entorno de trabajo nuevo o poco explorado para
+       alguno de los integrantes, la velocidad inicial será lenta.
+           ○​ Supuesto: Asumimos que dedicaremos las dos primeras semanas a
+              adaptarse a las tecnologías empleadas.
+   3.​ Riesgo de Integración: Que el trabajo de los dos integrantes no encaje al unirlo.
+           ○​ Mitigación: Integración continua desde la primera semana (evitar esperar al
+              final para unir el código).
+

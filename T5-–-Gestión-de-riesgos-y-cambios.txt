@@ -1,0 +1,342 @@
+T5 – Gestión de riesgos y
+cambios
+¿Qué ocurre cuando las cosas no salen como se esperaba?
+
+
+Proyecto Software
+Grado en Ingeniería Informática
+Escuela Politécnica de Teruel
+Universidad de Zaragoza
+¿Qué es un riesgo en un proyecto?
+
+Un riesgo es un evento incierto que, si ocurre, puede afectar negativamente al proyecto.
+
+Características clave:
+
+ ●   no es un problema (todavía),
+
+ ●   tiene una probabilidad de ocurrir,
+
+ ●   y un impacto sobre el proyecto.
+
+
+
+
+                                Un riesgo ignorado no desaparece,
+                         solo espera al peor momento para materializarse.
+Tipos de riesgos en proyectos
+
+●   Riesgos técnicos                  ●   Riesgos organizativos
+
+     ○   tecnologías nuevas,               ○   falta de tiempo real,
+
+     ○   complejidad no conocida,          ○   descoordinación,
+
+     ○   integraciones inciertas.          ○   dependencia entre personas.
+
+●   Riesgos de alcance                ●   Riesgos de planiﬁcación
+
+     ○   requisitos poco claros,           ○   estimaciones demasiado optimistas,
+
+     ○   crecimiento no controlado,        ○   ausencia de márgenes,
+
+     ○   expectativas irreales.            ○   hitos poco informativos.
+Identiﬁcación temprana de riesgos
+
+Gestionar riesgos empieza por hacerlos visibles.
+
+La identiﬁcación temprana permite:
+
+ ●   tomar decisiones antes de que el impacto sea alto,
+
+ ●   ajustar alcance, planiﬁcación o enfoque,
+                                                           El mejor momento para hablar
+ ●   reducir la incertidumbre.                            de riesgos es cuando todavía no
+                                                                  son problemas.
+Los riesgos no se identiﬁcan solos:
+
+ ●   se buscan,
+
+ ●   se formulan,
+
+ ●   y se documentan.
+                     Objetivo del sistema:
+
+                      ●   sustituir hojas Excel y correos,
+
+                      ●   centralizar asignación y seguimiento de tareas,
+
+Herramienta           ●   mejorar visibilidad del trabajo del equipo.
+
+
+interna de gestión   Contexto clave:
+
+
+de tareas para una    ●   los usuarios ya trabajan “como pueden”,
+
+                      ●   no existe urgencia técnica,
+empresa mediana       ●   el éxito depende más del uso real que del
+                          software en sí.
+                     Identiﬁcar riesgos respondiendo a preguntas como:
+
+                      ●    ¿qué podría hacer que la herramienta no se use?
+
+                      ●    ¿qué depende de hábitos previos difíciles de
+                           cambiar?
+
+Herramienta           ●    ¿qué pasa si los usuarios no colaboran?
+
+interna de gestión   Agrupar los riesgos identiﬁcados en:
+
+de tareas para una    ●    organizativos (resistencia al cambio),
+
+empresa mediana       ●    de alcance (expectativas irreales),
+
+                      ●    de planiﬁcación (poco tiempo para validación),
+
+                      ●    técnicos secundarios (integración, rendimiento).
+Riesgos vs. errores
+
+En proyectos software es muy habitual confundir riesgos con errores o fallos. Esta confusión diﬁculta la
+gestión del proyecto, porque desplaza la atención demasiado tarde.
+
+Riesgo:                                              Error / fallo:
+
+ ●   es una posibilidad futura,                       ●    es un hecho consumado,
+ ●   aún no ha ocurrido,                              ●    ya ha ocurrido,
+ ●   está asociada a incertidumbre,                   ●    tiene consecuencias directas,
+ ●   puede gestionarse de forma preventiva.           ●    solo puede corregirse, normalmente con
+                                                           mayor coste.
+
+
+                       Un riesgo explica por qué algo podría salir mal.
+                             Un error describe qué ha salido mal.
+                     Un compañero de proyecto nos da esta lista de
+                     riesgos técnicos:
+
+                      ●   “que el código no funcione”
+
+                      ●   “que haya muchos bugs”
+Herramienta           ●   “que la base de datos falle”
+interna de gestión    ●   “que el servidor no soporte muchas peticiones”
+de tareas para una   ¿Son riesgos?
+
+empresa mediana      ¿Se podrían reformular?
+Evaluación de riesgos: probabilidad e impacto
+
+No todos los riesgos tienen la misma gravedad ni requieren la misma atención.
+
+Para evaluarlos, basta con responder a dos preguntas:
+
+ ●   ¿qué probabilidad hay de que ocurra?
+ ●   ¿qué impacto tendría si ocurre?
+
+Esto permite:
+
+ ●   priorizar riesgos,
+ ●   centrar la atención donde importa,
+ ●   evitar alarmismo innecesario.
+
+No se buscan cálculos complejos, sino criterio.
+                     A partir de 4–5 riesgos de la dinámica anterior, por
+                     ejemplo:
+
+                      ●    resistencia al cambio,
+                      ●    alcance creciente,
+
+Herramienta           ●
+                      ●
+                           falta de implicación del cliente,
+                           baja calidad de los datos iniciales.
+interna de gestión   Valorar la probabilidad (alta, media, baja)
+de tareas para una   Valorar el impacto (alto, medio, bajo)
+
+empresa mediana       ●    ¿qué riesgo es más peligroso aunque no sea
+                           técnico?
+                      ●    ¿cuál es muy probable pero con impacto
+                           limitado?
+                      ●    ¿cuál parece pequeño pero podría escalar?
+Estrategias básicas de gestión de riesgos
+
+Ante un riesgo identiﬁcado, existen estrategias habituales:
+
+ ●    Evitar: cambiar el enfoque para eliminar el riesgo.
+
+ ●    Reducir: tomar medidas para bajar probabilidad o impacto.
+
+ ●    Aceptar: asumir el riesgo conscientemente.
+
+ ●    Mitigar: preparar un plan de respuesta si ocurre.
+
+La clave es que la decisión sea explícita, no accidental.
+
+
+
+            No todos los riesgos se eliminan, pero todos deberían gestionarse
+                                    conscientemente.
+Planes de contingencia
+
+Un plan de contingencia es una acción preparada con antelación para ejecutar si un riesgo se
+materializa.
+
+No es:                                         Es:
+
+ ●   una corrección improvisada,                ●    una respuesta pensada antes,
+ ●   ni una reacción en caliente,               ●    asociada a un riesgo concreto,
+ ●   ni una solución deﬁnitiva.                 ●    diseñada para reducir el impacto, no para
+                                                     eliminar el problema.
+
+
+
+
+         Gestionar un riesgo no es evitar que ocurra, es saber qué hacer si ocurre.
+Relación con las estrategias de gestión de riesgos
+
+●   Evitar → no necesita plan de contingencia (el riesgo se elimina).
+
+●   Reducir → puede tener plan de contingencia parcial.
+
+●   Aceptar → debe tener plan de contingencia.
+
+●   Mitigar → se apoya directamente en planes de contingencia.
+
+
+
+
+     Aceptar un riesgo sin plan de contingencia no es gestión, es resignación.
+¿Qué caracteriza a un buen plan de contingencia?
+
+Un buen plan de contingencia debe ser:
+
+ ●   concreto (qué se hace),
+ ●   activable (cuándo se aplica),
+ ●   realista (dentro de los recursos disponibles),
+ ●   proporcionado al impacto del riesgo.
+
+No debe ser:
+
+ ●   genérico (“trabajar más”),
+ ●   vago,
+ ●   ni imposible de ejecutar.
+                     Existe el riesgo de que los empleados no adopten la
+                     herramienta y continúen utilizando hojas Excel y
+                     correos electrónicos como hasta ahora.
+
+                     Características del riesgo:
+
+Herramienta           ●    No es técnico.
+
+interna de gestión    ●
+                      ●
+                           Tiene alta probabilidad.
+                           Su impacto es alto (fracaso funcional del
+de tareas para una         proyecto aunque el software funcione).
+
+
+empresa mediana      Deﬁnir un plan de contingencia concreto,
+                     respondiendo a:
+
+                            ○    ¿qué se haría si, tras la primera entrega, la
+                                 herramienta no se usa?
+                            ○    ¿qué acción se activaría exactamente?
+                            ○    ¿qué parte del proyecto se vería afectada?
+Relación entre riesgos y planiﬁcación
+
+Los riesgos afectan directamente a:
+
+ ●    estimaciones,
+ ●    calendario,
+ ●    coste,
+ ●    calidad.
+
+Una planiﬁcación sin considerar riesgos:
+
+ ●    es frágil,
+ ●    se rompe ante el primer imprevisto.
+
+Por ello:
+
+ ●    los riesgos deben revisarse periódicamente,
+ ●    especialmente en cada hito relevante.
+¿Qué es un cambio en un proyecto software?
+
+Un cambio es cualquier modiﬁcación respecto a:
+
+ ●   alcance,
+ ●   prioridades,
+ ●   planiﬁcación,
+ ●   o supuestos iniciales.
+
+En software:
+
+ ●   el cambio es inevitable,
+ ●   intentar evitarlo por completo suele ser contraproducente.
+
+El problema no es el cambio, sino:
+
+ ●   introducirlo sin evaluar su impacto,
+ ●   o asumir que “no pasa nada”.
+Impacto del cambio en el proyecto
+
+Todo cambio tiene impacto en:
+
+ ●   esfuerzo,
+ ●   tiempo,
+ ●   coste,
+ ●   riesgos,
+ ●   calidad.
+
+Cuanto más avanzado está el proyecto mayor es el impacto del cambio, más caro resulta incorporarlo.
+
+Por eso:
+
+ ●   los cambios deben analizarse,
+ ●   no aceptarse automáticamente.
+                     Se introduce un cambio típico del cliente:
+
+                      ●   “Ya que estamos, ¿podemos añadir informes de
+                          productividad por persona y equipo?”
+
+                     Tenemos que analizar:
+Herramienta           ●   impacto en alcance,
+interna de gestión    ●   impacto en esfuerzo y planiﬁcación,
+
+de tareas para una
+                      ●   nuevos riesgos introducidos (conﬂictos
+                          internos, rechazo del sistema),
+
+empresa mediana
+                      ●   ¿qué habría que revisar del plan inicial?
+                      ●   ¿el cambio es asumible sin tocar nada más?
+                      ●   ¿qué se tendría que sacriﬁcar?
+                      ●   ¿el riesgo organizativo aumenta o disminuye?
+Gestión consciente de cambios
+
+Gestionar cambios implica:
+
+ ●   analizar su impacto,
+ ●   decidir si se acepta,
+ ●   ajustar planiﬁcación y expectativas.
+
+No se trata de decir siempre “no”, sino de decidir con información.
+
+En proyectos pequeños:
+
+ ●   basta con un proceso ligero,
+ ●   pero explícito.
+Conclusión
+
+    En estos proyectos:
+
+      ●   los riesgos principales no están en el código,
+      ●   los cambios afectan a personas y dinámicas de trabajo,
+      ●   y gestionar el proyecto es, en gran parte, gestionar expectativas y resistencias.
+
+Los proyectos software no fracasan por cambiar, fracasan por no saber gestionar el cambio.
+
+
+
+
+  Si existen riesgos y cambios inevitables, ¿cómo se puede saber si el proyecto va
+                             bien o se está desviando?
+

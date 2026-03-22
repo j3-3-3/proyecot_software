@@ -1,0 +1,371 @@
+T2 - Enfoques de desarrollo y
+organización del trabajo
+¿Cómo nos organizamos para trabajar de forma eﬁcaz?
+
+
+Proyecto Software
+Grado en Ingeniería Informática
+Escuela Politécnica de Teruel
+Universidad de Zaragoza
+Organización del trabajo en proyectos software
+
+         Un proyecto software requiere una organización explícita del trabajo.
+
+
+Sin ella, el avance depende de decisiones             Organizar el trabajo implica decidir:
+informales, intuiciones o urgencias, lo que conduce
+                                                       ●    cómo se estructura el desarrollo,
+habitualmente a:
+                                                       ●    en qué orden se realizan las actividades,
+ ●   pérdida de visión global,                         ●    cómo se coordinan las personas,
+ ●   duplicación de esfuerzos,                         ●    y cómo se controla el avance real.
+ ●   retrasos encadenados,
+ ●   diﬁcultades para reaccionar ante problemas.
+                     Una organización encarga el desarrollo de una
+                     aplicación web para gestionar un proceso interno que
+                     actualmente se realiza de forma manual (formularios,
+                     correos y hojas de cálculo).
+
+                     Características del encargo:
+
+¿Cómo                 ●   existe una fecha de entrega aproximada,
+
+trabajaríamos este    ●
+                      ●
+                          el alcance no está completamente cerrado,
+                          intervienen varios perﬁles de usuario,
+proyecto?             ●   el cliente espera “mejorar la eﬁciencia” del
+                          proceso.
+
+                     No se proporcionan más detalles técnicos
+                     deliberadamente.
+Enfoques de desarrollo
+
+●   Enfoques secuenciales Organización por fases claramente delimitadas.
+
+     ○   Ventajas: claridad inicial.
+
+     ○   Riesgos: rigidez, detección tardía de errores.
+
+●   Enfoques iterativos e incrementales Avance por ciclos cortos con resultados parciales.
+
+     ○   Ventajas: feedback temprano, adaptación.
+
+     ○   Riesgos: necesidad de disciplina y seguimiento.
+
+●   Enfoques híbridos Combinan planiﬁcación inicial con iteraciones posteriores. Son habituales en
+    proyectos reales.
+Metodologías de desarrollo
+
+  ¿Qué son las metodologías de desarrollo?
+
+  Las metodologías de desarrollo deben entenderse como:
+
+   ●   Marcos de referencia para organizar el trabajo.
+
+   ●   Conjuntos de prácticas útiles que ayudan a coordinar equipos y actividades.
+
+   ●   Herramientas conceptuales para planiﬁcar, ejecutar y controlar un proyecto.
+
+  Su función principal es ayudar a tomar decisiones, no sustituirlas.
+Metodologías de desarrollo
+
+  ¿Qué no son las metodologías de desarrollo?
+
+  Las metodologías no deben aplicarse como:
+
+   ●   recetas cerradas,
+   ●   procedimientos automáticos,
+   ●   ni garantías de éxito del proyecto.
+
+  El simple hecho de “usar una metodología” no asegura:
+
+   ●   que el proyecto llegue a tiempo,
+   ●   que el producto sea adecuado,
+   ●   ni que el equipo trabaje mejor.
+Metodologías de desarrollo
+
+  Riesgos de aplicarlas rígidamente
+
+  La aplicación acrítica o dogmática de una metodología puede generar:
+
+   ●   burocracia innecesaria, con procesos que no aportan valor real.
+
+   ●   falsa sensación de control, basada en rituales y artefactos sin análisis.
+
+   ●   desalineación con el proyecto real, cuando se prioriza “seguir la metodología” frente a
+       resolver problemas reales.
+Metodologías de desarrollo
+
+     Principales familias de metodologías y enfoques
+
+       ●   Enfoques secuenciales (p. ej., cascada).
+
+       ●   Enfoques ágiles (Scrum, Extreme Programming, etc.).
+
+       ●   Enfoques Lean (optimización del ﬂujo y eliminación de desperdicio).
+
+       ●   Kanban (gestión visual y control del trabajo en curso).
+
+       ●   DevOps (integración entre desarrollo, despliegue y operación).
+
+       ●   Enfoques híbridos (combinaciones de planiﬁcación clásica y prácticas ágiles).
+
+En la práctica profesional, los modelos puros son la excepción, no la norma.
+Metodologías de desarrollo
+
+Scrum se utiliza como ejemplo de:           Kanban se utiliza como ejemplo de:
+
+ ●     enfoque iterativo,                     ●   gestión del ﬂujo de trabajo,
+ ●     trabajo por ciclos,                    ●   visualización,
+ ●     planiﬁcación a corto plazo.            ●   mejora progresiva del proceso.
+
+
+
+
+     El objetivo no es aprender a “hacer Scrum” o “hacer Kanban”, sino entender qué
+               problemas intentan resolver y qué tipo de decisiones facilitan.
+Metodologías de desarrollo
+Metodologías de desarrollo
+Metodologías de desarrollo
+
+    Herramientas para enfoques híbridos o ﬂexibles
+
+●   GitHub
+     ○ Uso de issues, projects y milestones.Muy adecuada cuando el repositorio es el centro del
+         proyecto.
+●   GitLab
+     ○ Gestión integrada de código, tareas y planiﬁcación. Buena trazabilidad entre tareas y código.
+●   Notion
+     ○ Muy ﬂexible y adaptable. Permite crear tableros, documentos y vistas personalizadas.
+         Adecuada para combinar planiﬁcación, documentación y seguimiento. Requiere disciplina
+         para no perder estructura.
+●   Asana
+     ○ Enfoque generalista de gestión de proyectos. Soporta vistas tipo Kanban, listas y
+         cronogramas. Útil cuando se prioriza la coordinación frente a métricas técnicas.
+Metodologías de desarrollo
+
+  Clave sobre metodologías
+
+  Las metodologías (Scrum, Kanban, etc.) deben entenderse como:
+
+   ●   marcos de trabajo,
+   ●   conjuntos de prácticas,
+   ●   referencias para organizar el trabajo.
+
+  No son:
+
+   ●   recetas cerradas,
+   ●   ni garantías de éxito
+                      Desarrollo de una aplicación web para gestionar
+                      un proceso interno de una organización, con
+                      varios perﬁles de usuario y un alcance
+                      inicialmente incompleto.
+
+                      Se añaden ahora dos contextos distintos dentro del
+
+¿Qué elementos        mismo proyecto:
+
+
+de Scrum os            1.   Desarrollo de nuevas funcionalidades
+                            (pantallas, ﬂujos de trabajo, lógica principal).
+resultarían útiles?    2.   Gestión de incidencias, ajustes y pequeñas
+                            mejoras que aparecen una vez hay versiones en
+                            uso.
+                      Desarrollo de una aplicación web para gestionar
+                      un proceso interno de una organización, con
+                      varios perﬁles de usuario y un alcance
+                      inicialmente incompleto.
+
+                      Se añaden ahora dos contextos distintos dentro del
+
+¿Qué elementos        mismo proyecto:
+
+
+de Kanban os           1.   Desarrollo de nuevas funcionalidades
+                            (pantallas, ﬂujos de trabajo, lógica principal).
+resultarían útiles?    2.   Gestión de incidencias, ajustes y pequeñas
+                            mejoras que aparecen una vez hay versiones en
+                            uso.
+Organización por tareas, hitos e iteraciones
+
+La organización del trabajo puede abordarse en varios niveles complementarios:
+
+ ●   Tareas: unidades de trabajo concretas.
+ ●   Hitos: puntos de control relevantes.
+ ●   Iteraciones: ciclos de trabajo con objetivos claros.
+
+Una mala organización suele manifestarse en:
+
+ ●   tareas poco claras,
+ ●   hitos irrelevantes,
+ ●   iteraciones sin objetivos reales.
+Coordinación del trabajo en equipo
+
+En proyectos software, la coordinación del equipo es crítica. Implica:
+
+ ●   reparto claro de responsabilidades,
+ ●   mecanismos de comunicación,
+ ●   sincronización del trabajo,
+ ●   gestión de dependencias.
+
+La falta de coordinación suele provocar:
+
+ ●   retrasos invisibles,
+ ●   conﬂictos personales,
+ ●   pérdida de calidad progresiva.
+
+La coordinación no ocurre sola: debe diseñarse y mantenerse.
+                   Un equipo de dos personas está desarrollando una
+                   aplicación web como proyecto académico con:
+
+                    ●    un plazo de entrega ﬁjo,
+                    ●    varios hitos intermedios,
+
+¿Cómo se reparte    ●    y una carga de trabajo signiﬁcativa.
+
+
+el trabajo entre   El proyecto incluye:
+
+
+los miembros del
+                    ●    diseño de la aplicación,
+                    ●    desarrollo funcional,
+
+equipo?             ●
+                    ●
+                         gestión del repositorio,
+                         documentación,
+                    ●    y preparación de la entrega ﬁnal.
+
+                   No se asume ninguna metodología concreta.
+                 Un equipo de dos personas está desarrollando una
+                 aplicación web como proyecto académico con:
+
+                  ●    un plazo de entrega ﬁjo,
+                  ●    varios hitos intermedios,
+                  ●    y una carga de trabajo signiﬁcativa.
+
+¿Quién es        El proyecto incluye:
+
+responsable de    ●    diseño de la aplicación,
+
+qué?              ●
+                  ●
+                       desarrollo funcional,
+                       gestión del repositorio,
+                  ●    documentación,
+                  ●    y preparación de la entrega ﬁnal.
+
+                 No se asume ninguna metodología concreta.
+                   Un equipo de dos personas está desarrollando una
+                   aplicación web como proyecto académico con:
+
+                    ●    un plazo de entrega ﬁjo,
+                    ●    varios hitos intermedios,
+                    ●    y una carga de trabajo signiﬁcativa.
+
+¿Cómo se           El proyecto incluye:
+
+coordina el         ●    diseño de la aplicación,
+
+trabajo semanal?    ●
+                    ●
+                         desarrollo funcional,
+                         gestión del repositorio,
+                    ●    documentación,
+                    ●    y preparación de la entrega ﬁnal.
+
+                   No se asume ninguna metodología concreta.
+              Un equipo de dos personas está desarrollando una
+              aplicación web como proyecto académico con:
+
+               ●    un plazo de entrega ﬁjo,
+               ●    varios hitos intermedios,
+
+Uno de los     ●    y una carga de trabajo signiﬁcativa.
+
+
+miembros se   El proyecto incluye:
+
+
+retrasa una
+               ●    diseño de la aplicación,
+               ●    desarrollo funcional,
+
+semana         ●
+               ●
+                    gestión del repositorio,
+                    documentación,
+               ●    y preparación de la entrega ﬁnal.
+
+              No se asume ninguna metodología concreta.
+                Un equipo de dos personas está desarrollando una
+                aplicación web como proyecto académico con:
+
+                 ●    un plazo de entrega ﬁjo,
+                 ●    varios hitos intermedios,
+                 ●    y una carga de trabajo signiﬁcativa.
+
+Cambia una      El proyecto incluye:
+
+prioridad del    ●    diseño de la aplicación,
+
+proyecto         ●
+                 ●
+                      desarrollo funcional,
+                      gestión del repositorio,
+                 ●    documentación,
+                 ●    y preparación de la entrega ﬁnal.
+
+                No se asume ninguna metodología concreta.
+                     Un equipo de dos personas está desarrollando una
+                     aplicación web como proyecto académico con:
+
+                      ●    un plazo de entrega ﬁjo,
+                      ●    varios hitos intermedios,
+
+Aparece una           ●    y una carga de trabajo signiﬁcativa.
+
+
+dependencia no       El proyecto incluye:
+
+
+prevista entre dos
+                      ●    diseño de la aplicación,
+                      ●    desarrollo funcional,
+
+tareas                ●
+                      ●
+                           gestión del repositorio,
+                           documentación,
+                      ●    y preparación de la entrega ﬁnal.
+
+                     No se asume ninguna metodología concreta.
+Gestión del cambio
+
+El cambio es inherente a los proyectos:
+
+ ●   cambian requisitos,
+ ●   cambian prioridades,
+ ●   aparecen imprevistos.
+
+Gestionar el cambio implica:
+
+ ●   evaluar su impacto,
+ ●   decidir conscientemente,
+ ●   ajustar planiﬁcación y expectativas.
+
+Un proyecto sin gestión del cambio se vuelve reactivo y caótico.
+Conclusión
+
+
+
+Organizar un proyecto no consiste en elegir una metodología, sino en decidir cómo
+     se trabaja, cómo se coordina el equipo y cómo se responde al cambio.
+
+
+
+       Una vez decidido cómo vamos a trabajar, la siguiente pregunta es
+         inevitable: ¿qué vamos a hacer exactamente y hasta dónde?
+

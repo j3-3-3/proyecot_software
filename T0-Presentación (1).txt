@@ -1,0 +1,289 @@
+T0 - Presentación
+¿Qué implica un proyecto software?
+
+
+Proyecto Software
+Grado en Ingeniería Informática
+Escuela Politécnica de Teruel
+Universidad de Zaragoza
+              Una startup quiere
+
+Videojuego    desarrollar un videojuego
+              casual y competitivo que se
+              juegue mientras el usuario
+activo para   corre en una cinta.
+
+
+cinta de      El jugador controla a su avatar
+              corriendo físicamente,
+
+correr
+              compitiendo en pruebas
+              cortas y divertidas, al estilo
+              party game.
+              El objetivo inmediato es
+              disponer de un prototipo
+Videojuego    jugable para una demo
+              pública en un evento, y una
+
+activo para   presentación a inversores.
+
+              El cliente insiste en: “tiene que
+cinta de      ser muy divertido y visual”, “no
+              hace falta que esté
+correr        completo”, “lo importante es
+              que se entienda la idea en 2
+              minutos”.
+           ●   ¿De cuánto tiempo real se dispone para el
+               prototipo?
+
+           ●   ¿La fecha del evento es ﬁja?
+
+
+Tiempo y   ●   ¿Qué ocurre si el prototipo no está listo ese
+               día?
+
+
+alcance    ●   ¿Qué funcionalidades mínimas debe tener
+               para que se entienda el concepto?
+
+           ●   ¿Qué partes del juego se dejan explícitamente
+               fuera?
+                ●   ¿Cuál es el presupuesto disponible para esta
+                    fase?
+
+                ●   ¿Incluye solo desarrollo o también hardware,
+
+
+Presupuesto y
+                    licencias y pruebas?
+
+                ●   ¿Qué ocurre si el presupuesto se agota antes
+
+
+   costes
+                    de terminar?
+
+                ●   ¿Hay margen para desviaciones?
+
+                ●   ¿Qué decisiones dependen directamente del
+                    presupuesto?
+                ●   ¿Es necesario invertir en:
+
+
+
+Inversiones y
+                      ○   licencias de motor de juego,
+
+                      ○   sensores o APIs de la cinta,
+
+
+    costes      ●
+                      ○   dispositivos para pruebas?
+
+                    ¿Cuántas cintas se necesitan para testear?
+
+
+  indirectos    ●
+
+                ●
+                    ¿Qué costes existen aunque no haya usuarios?
+
+                    ¿Qué decisiones generan gastos futuros
+                    inevitables?
+              ○   ¿Qué riesgos técnicos existen al integrar juego
+                  y hardware?
+
+              ○   ¿Qué pasa si la lectura de velocidad no es
+
+Riesgos del   ○
+                  ﬁable?
+
+                  ¿Qué ocurre si el jugador se cansa o se
+
+ proyecto     ○
+                  detiene?
+
+                  ¿Hay riesgos de seguridad física?
+
+              ○   ¿Qué riesgos podrían hacer inviable el
+                  producto aunque el juego funcione?
+              ○   ¿Cómo se va a organizar el desarrollo del
+                  juego?
+
+              ○   ¿Se trabajará por iteraciones cortas?
+
+
+
+Metodología
+              ○   ¿Cómo se gestionan cambios de idea del
+                  cliente?
+
+              ○   ¿Quién decide qué se prioriza cuando no hay
+                  tiempo para todo?
+
+              ○   ¿Cómo se documentan las decisiones
+                  importantes?
+                ○   ¿Qué motor de juego se va a utilizar y por qué?
+
+
+
+Tecnologías y
+                ○   ¿Se prioriza rapidez de prototipado o calidad
+                    técnica?
+
+
+
+ decisiones
+                ○   ¿Cómo se integra la entrada de la cinta en el
+                    juego?
+
+                ○   ¿Qué decisiones técnicas generan deuda a
+
+  técnicas      ○
+                    corto plazo?
+
+                    ¿Qué decisiones impedirían escalar el
+                    producto después?
+                    ○   ¿Dónde se ejecuta el prototipo?
+
+                    ○   ¿Se necesita conexión a internet?
+
+Infraestructura y   ○   ¿Qué ocurre si la demo falla en directo?
+
+
+
+    ejecución
+                    ○   ¿Quién se encarga del despliegue y la puesta
+                        en marcha?
+
+                    ○   ¿Qué coste tiene mantener el prototipo
+                        operativo?
+Seguimiento y
+                ○   ¿Cómo se sabrá si el proyecto va bien o mal?
+
+                ○   ¿Qué indicadores se van a utilizar?
+
+
+ control del    ○
+
+                ○
+                    ¿Cada cuánto se revisa el estado del proyecto?
+
+                    ¿Cómo se detectan problemas antes de que
+
+
+  proyecto
+                    sea tarde?
+
+                ○   ¿Quién tiene una visión global del avance?
+               ○   ¿Cómo se coordinan perﬁles distintos (juego,
+
+
+Coordinación
+                   hardware, diseño)?
+
+               ○   ¿Qué ocurre si una parte del sistema se
+                   retrasa?
+
+ del equipo    ○   ¿Cómo se comunican bloqueos?
+
+               ○   ¿Cómo se evitan soluciones incompatibles?
+                 ○   ¿Quién valida el prototipo?
+
+
+Validación del
+                 ○   ¿Qué signiﬁca que el juego “funciona bien”?
+
+                 ○   ¿Se valida la diversión, la seguridad o ambas?
+
+
+  producto       ○
+
+                 ○
+                     ¿Cómo se recoge feedback de los jugadores?
+
+                     ¿Qué se hace si el juego es divertido pero
+                     físicamente incómodo?
+               ○   ¿Qué ocurre si el prototipo gusta mucho?
+
+               ○   ¿Está preparado para evolucionar a producto
+
+
+Escenario de
+                   comercial?
+
+               ○   ¿Qué habría que rehacer?
+
+
+   éxito       ○   ¿Qué decisiones tomadas ahora condicionan
+                   el futuro?
+
+               ○   ¿Se ha documentado lo suﬁciente para
+                   continuar?
+Si este proyecto fracasa,
+¿habrá sido porque el juego no era
+divertido.. o porque no se planiﬁcó,
+gestionó y controló correctamente?
+Enfoque general de la asignatura
+Asignatura eminentemente práctica, orientada a la gestión y desarrollo de un proyecto software real.
+Continuación natural de Ingeniería del Software:
+  ●   se asumen conocimientos previos de análisis, diseño, implementación y pruebas,
+  ●   el foco se sitúa en planiﬁcación, gestión, control, calidad y toma de decisiones.
+No se plantean cursos especíﬁcos de metodologías o herramientas:
+  ●   se presentan como estado del arte y medios de trabajo profesional.
+Organización temporal
+La asignatura se desarrolla a lo largo de 13 semanas lectivas:
+  ●   Teoría: lunes 10h-12h (aula 3.1)
+  ●   Prácticas: martes 12h - 14h (lab. informática 1).
+
+
+Permutas de horario
+Durante el semestre hay dos sesiones afectadas por permutas a viernes:
+  ●   lunes 16 de febrero → sesión de teoría.
+  ●   martes 17 de marzo → sesión de prácticas.
+Evaluación
+Desarrollo de un proyecto práctico
+ ●    Proyecto desarrollado en parejas.
+ ●    Preferentemente, evolución de uno de los proyectos individuales previos (elegido por la pareja), tratado como
+      sistema heredado.
+ ●    Alternativamente, proyecto nuevo de complejidad equivalente.
+ ●    El proyecto debe dar lugar a un producto funcional, coherente con lo descrito en la documentación ﬁnal.
+ ●    4 entregables intermedios + entrega ﬁnal
+No hay examen
+ ●    La asignatura no tiene examen.
+ ●    Solo se contempla prueba alternativa si algún estudiante la solicita formalmente, según normativa.
+Entregables intermedios (40%)
+E1 - Planteamiento inicial y planiﬁcación (10%)   E3 - Seguimiento intermedio y replaniﬁcación (10%)
+ ●    Deﬁnición del proyecto y alcance.            ●    Estado real del proyecto.
+ ●    Enfoque de trabajo y organización.           ●    Desviaciones detectadas.
+ ●    Justiﬁcación inicial de decisiones.          ●    Decisiones de ajuste y replaniﬁcación.
+  ●   Domingo 8 de febrero                          ●   Domingo 8 de marzo
+
+
+E2 - Estimación, cronograma y riesgos (10%)       E4 - Estado avanzado del proyecto (10%)
+ ●    Estimación de esfuerzo y costes.             ●    Gestión de la conﬁguración y control de versiones.
+ ●    Planiﬁcación temporal.                       ●    Calidad del producto y del proceso.
+ ●    Identiﬁcación y análisis de riesgos.         ●    Preparación para el cierre del proyecto.
+  ●   Domingo 22 de febrero                         ●   Domingo 29 de marzo
+Entregable ﬁnal (60%)
+E5 - Memoria completa del proyecto (30%)                 Defensa individual (30%)
+ ●    Documento único, coherente y profesional.           ●    Defensa individual, aunque el proyecto sea en pareja.
+ ●    Integra y reorganiza los contenidos de los hitos    ●    Evaluación de:
+      previos.                                                   ○   conocimiento global del proyecto,
+ ●    Incluye explícitamente:                                    ○   contribución personal,
+        ○   planteamiento del problema,                          ○   justiﬁcación de decisiones,
+        ○   justiﬁcación metodológica y tecnológica,             ○   capacidad de análisis crítico.
+        ○   planiﬁcación y estimaciones,                  ●    Principal mecanismo de evaluación individual.
+        ○   análisis y gestión de riesgos,                 ●   Lunes 4 y martes 5 de mayo.
+        ○   seguimiento y decisiones tomadas,
+        ○   calidad del producto y del proceso,
+        ○   evaluación crítica y lecciones aprendidas.
+ ●    Domingo 3 de mayo
+En esta asignatura no se
+evalúa el código,
+sino cómo se planiﬁca, se
+gestiona, se controla y se
+justiﬁca un proyecto
+software real.
+

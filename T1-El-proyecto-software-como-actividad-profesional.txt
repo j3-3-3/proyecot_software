@@ -1,0 +1,186 @@
+T1 - El proyecto software como
+actividad profesional
+No solo es programación, tiene múltiples restricciones y se
+evalúa con criterios más amplios que el funcionamiento.
+
+Proyecto Software
+Grado en Ingeniería Informática
+Escuela Politécnica de Teruel
+Universidad de Zaragoza
+¿Qué entendemos por Proyecto Software?
+
+
+
+         ¿Qué signiﬁca que un proyecto software “haya salido bien”?
+
+
+
+   En un proyecto software profesional, que el código funcione no garantiza
+                      que el proyecto haya sido un éxito.
+¿Qué entendemos por Proyecto Software?
+Un proyecto software implica:                        El software es el resultado visible, pero el proyecto
+                                                     incluye:
+ ●   tomar decisiones en condiciones de
+     incertidumbre,                                   ●   planiﬁcación,
+ ●   coordinar personas con perﬁles y                 ●   gestión,
+     responsabilidades distintas,                     ●   seguimiento,
+ ●   gestionar recursos limitados,                    ●   documentación,
+ ●   y responder a expectativas externas (cliente,    ●   validación,
+     usuarios, organización).                         ●   y cierre.
+El proyecto como problema de decisiones
+
+  Un proyecto software es un problema de decisiones, no solo de implementación.
+
+
+
+Estas decisiones afectan a:
+
+ ●   qué se va a hacer y qué no,
+ ●   cuándo se va a entregar,
+ ●   con qué recursos,
+ ●   con qué nivel de calidad,
+ ●   y con qué riesgos se está dispuesto a convivir.
+Restricciones fundamentales de un proyecto
+
+Todo proyecto software está condicionado, como mínimo, por cuatro grandes restricciones:
+
+ ●   Alcance: qué funcionalidades o resultados se esperan del proyecto.
+ ●   Tiempo: plazos, fechas límite, hitos intermedios.
+ ●   Coste: recursos humanos, económicos y materiales disponibles.
+ ●   Calidad: nivel de ﬁabilidad, usabilidad, mantenibilidad y robustez esperado.
+                     ● “Queremos más
+¿Qué es lo primero     funcionalidades.”
+que suele            ● “Queremos llegar antes.”
+sacriﬁcarse?
+                     ● “No hay más presupuesto.”
+¿Quién ha          ● “Queremos más
+decidido que eso     funcionalidades.”
+
+sea lo que se      ● “Queremos llegar antes.”
+
+sacriﬁca?          ● “No hay más presupuesto.”
+                    Una organización encarga el desarrollo de una
+
+¿Qué puede salir    aplicación web interna para gestionar un proceso que
+                    hasta ahora se hacía manualmente (formularios,
+mal en este         correos, hojas Excel).
+
+proyecto?           El encargo incluye:
+
+                     ●    una fecha de entrega ﬁja (por necesidad
+                          operativa),
+¿Qué podría hacer    ●    un presupuesto limitado,
+                     ●    varios perﬁles de usuario,
+que el proyecto      ●    y la expectativa de que el sistema “mejore la
+
+fracase aunque la
+                          eﬁciencia”.
+
+                    El cliente insiste en que:
+aplicación
+                     ●    “no es nada muy complicado”,
+funcione?            ●    “ya se irán puliendo cosas después”,
+                     ●    “lo importante es que esté funcionando”.
+El papel de los actores implicados
+
+Un proyecto software involucra a múltiples actores, cada uno con intereses y responsabilidades distintas:
+
+ ●   Cliente: deﬁne la necesidad y evalúa el resultado.
+ ●   Usuarios: utilizan el sistema y determinan su utilidad real.
+ ●   Equipo de desarrollo: implementa el software.
+ ●   Responsable de proyecto: coordina, planiﬁca y toma decisiones.
+
+Los conﬂictos entre actores son habituales:
+
+ ●   el cliente quiere más funcionalidades,
+ ●   el equipo necesita más tiempo,
+ ●   los usuarios tienen expectativas no explícitas.
+
+Gestionar un proyecto implica gestionar estos conﬂictos, no eliminarlos.
+El rol del responsable de proyecto
+
+El responsable de proyecto no es simplemente quien reparte tareas. Su función principal es:
+
+ ●   tomar decisiones informadas,
+ ●   anticipar problemas,
+ ●   coordinar el trabajo del equipo,
+ ●   y asumir la responsabilidad del resultado global.
+
+Entre sus funciones se encuentran:
+
+ ●   deﬁnir prioridades,
+ ●   negociar con el cliente,
+ ●   gestionar riesgos,
+ ●   supervisar el avance real,
+ ●   y decidir cuándo un proyecto está listo para avanzar o cerrarse.
+                   ●   ¿Quién es el cliente del proyecto?
+
+                   ●   ¿Quién paga el proyecto?
+Identiﬁcación de   ●   ¿Quién decide realmente?
+actores            ●   ¿Quién usa el producto ﬁnal?
+
+                   ●   ¿Quién desarrolla el software?
+                    ●   ¿Qué espera del proyecto?
+Identiﬁcación de    ●   ¿Qué considera un éxito?
+responsabilidades   ●   ¿Qué le preocupa especialmente?
+             ●   El cliente pide nuevas funcionalidades a
+                 mitad del proyecto.
+Conﬂictos    ●   El equipo advierte que no llega a la fecha.
+habituales   ●   La fecha de entrega es inamovible.
+
+             ●   El presupuesto no aumenta.
+Éxito técnico frente a éxito del proyecto
+
+Es fundamental distinguir entre:
+
+ ●    éxito técnico: el software funciona según lo esperado,
+ ●    éxito del proyecto: el producto satisface las necesidades reales dentro de las restricciones
+      acordadas.
+
+Los criterios de éxito incluyen:
+
+ ●    cumplimiento de plazos,
+ ●    adecuación al presupuesto,
+ ●    aceptación por parte del cliente y usuarios,
+ ●    capacidad de mantenimiento y evolución.
+
+La evaluación de un proyecto software debe hacerse desde una perspectiva global, no solo técnica.
+                    ●   El proyecto llega tarde, pero el software
+                        funciona correctamente.
+
+¿Éxito o fracaso?   ●   El proyecto llega a tiempo, pero al cliente
+
+¿Por qué?               no le convence el resultado.
+
+                    ●   El producto gusta mucho, pero es difícil
+                        de mantener o evolucionar.
+Factores habituales de fracaso en proyectos
+
+Numerosos proyectos software fracasan por causas recurrentes, entre ellas:
+
+ ●   deﬁnición deﬁciente del alcance,
+ ●   planiﬁcación poco realista,
+ ●   comunicación inadecuada,
+ ●   ausencia de seguimiento continuo,
+ ●   falta de validación con el cliente o usuarios,
+ ●   gestión deﬁciente de riesgos y cambios.
+
+La mayoría de estos factores no están relacionados directamente con la programación, sino con la
+gestión del proyecto.
+Conclusión
+
+
+
+Un proyecto software no se gestiona para que el código funcione, se gestiona para
+                 que el proyecto tenga éxito en un contexto real.
+
+
+
+       Si hay tantas personas y conﬂictos, ¿cómo nos organizamos para
+                                   trabajar?
+Conceptos clave
+
+●   programar bien no es suﬁciente,
+●   el proyecto tiene múltiples dimensiones,
+●   y la asignatura va de gestión, decisiones y responsabilidad.
+

@@ -1,0 +1,323 @@
+T4 – Estimación de esfuerzo,
+costes y calendario
+¿Cuánto cuesta (dinero y tiempo) hacer este proyecto?
+
+
+Proyecto Software
+Grado en Ingeniería Informática
+Escuela Politécnica de Teruel
+Universidad de Zaragoza
+¿Por qué “estimar”?
+
+La estimación en proyectos software es necesaria para:
+
+ ●    evaluar si un proyecto es viable,
+
+ ●    negociar alcance y prioridades,
+
+ ●    planiﬁcar hitos y entregas,
+
+ ●    y detectar problemas antes de que sea demasiado tarde.
+
+No estimar no evita la incertidumbre: simplemente la traslada al ﬁnal del proyecto.
+
+
+
+
+     Estimar no es predecir el futuro, es reducir la incertidumbre para poder decidir.
+¿Qué se puede estimar (y qué no)?
+En un proyecto software se suelen estimar:   Es importante distinguir que:
+
+ ●   esfuerzo (trabajo necesario),            ●   esfuerzo ≠ duración,
+
+ ●   duración (tiempo de calendario),         ●   más personas no implica automáticamente
+                                                  menos tiempo,
+ ●   coste (recursos consumidos).
+                                              ●   hay partes del proyecto que no pueden
+                                                  estimarse con precisión al inicio.
+
+
+
+
+      Cuanto menos se conoce el proyecto, más gruesa debe ser la estimación.
+Estimación de esfuerzo
+
+
+           El esfuerzo representa el trabajo efectivo que requiere el proyecto.
+
+Factores que inﬂuyen en la estimación de esfuerzo:   Enfoques razonables (sin formalismos):
+
+ ●   complejidad del problema,                        ●   descomposición en tareas grandes,
+ ●   experiencia del equipo,                          ●   analogía con proyectos similares,
+ ●   dependencias entre tareas,                       ●   estimación por rangos
+ ●   incertidumbre técnica,                               (optimista–realista–pesimista).
+ ●   calidad esperada.
+
+
+                 No se busca exactitud, sino coherencia y justiﬁcación.
+                     Lista cerrada de funcionalidades:
+
+                      ●   gestión de usuarios,
+
+                      ●   reservas básicas,
+Aplicación web        ●   cancelaciones,
+para la gestión de    ●   notiﬁcaciones simples,
+
+reservas y turnos     ●   panel de administración.
+
+de un pequeño        Sin números exactos, ¿qué funcionalidades
+                     consumen más esfuerzo? ¿por qué?
+gimnasio
+Del esfuerzo al calendario
+
+Pasar del esfuerzo estimado al calendario implica tener en cuenta que:
+
+ ●   no todo el esfuerzo es paralelizable,
+
+ ●   existen dependencias entre tareas,
+
+ ●   la coordinación consume tiempo,
+
+ ●   el calendario incluye interrupciones y márgenes.
+
+Aquí aparece la necesidad de representar el tiempo del proyecto.
+
+
+
+
+      Si se estima el esfuerzo, es necesario ver cómo se distribuye en el tiempo.
+¿Qué es un cronograma?
+
+Un cronograma es una representación sencilla y temporal del proyecto que muestra:
+
+ ●   qué actividades se van a realizar,
+ ●   cuándo comienzan y terminan,
+ ●   y cómo se relacionan entre sí en el tiempo.
+
+El cronograma traduce:
+
+ ●   el alcance (qué se hace),
+ ●   y el esfuerzo estimado (cuánto cuesta), en un calendario realista.
+
+No pretende ser exacto, sino coherente y útil para decidir.
+¿Qué es un diagrama de Gantt?
+
+El diagrama de Gantt es un gráﬁco bidimensional     Su valor principal no es técnico, sino comunicativo:
+que representa un cronograma donde:
+                                                     ●   permite ver el proyecto “de un vistazo”,
+ ●   el eje horizontal representa el tiempo,         ●   facilita detectar solapamientos,
+ ●   el eje vertical representa tareas o hitos,      ●   ayuda a identiﬁcar cuellos de botella.
+ ●   las barras muestran la duración estimada,
+ ●   las dependencias indican el orden lógico del
+     trabajo.
+¿Qué es un diagrama de Gantt?
+
+          Q1                Q2                Q3                Q4                Q1                Q2
+
+          ENE   FEB   MAR   ABR   MAY   JUN   JUL   AGO   SEP   OCT   NOV   DEC   ENE   FEB   MAR   ABR   MAY      JUN
+
+
+
+Tarea A
+
+
+
+Tarea B
+
+
+
+Tarea C
+
+
+
+Tarea D
+
+
+
+Tarea E
+
+                                                                                                                HITOS
+¿Qué aporta un Gantt (y qué no)?
+
+Aporta:                                            No aporta:
+
+ ●   visión global del proyecto,                    ●   garantía de cumplimiento,
+ ●   comprensión de dependencias,                   ●   control automático del proyecto,
+ ●   base para discutir viabilidad temporal,        ●   precisión absoluta.
+ ●   herramienta común para hablar con terceros.
+
+
+
+
+     Un Gantt no hace que el proyecto vaya bien, pero hace visibles los problemas
+                                        antes.
+Ejemplo sencillo aplicado a la asignatura
+
+
+                           1   2   3   4   5   6   7   8   9   10   11   12
+
+
+
+ Deﬁnición de alcance
+ y planiﬁcación inicial.
+
+
+ Desarrollo de
+ funcionalidades
+ principales.
+
+
+
+ Integración y ajustes.
+
+
+
+ Pruebas y
+ estabilización.
+
+
+
+ Preparación de
+ entrega y defensa.
+Errores habituales al usar Gantt
+
+  El Gantt es una herramienta de planiﬁcación y revisión, no un compromiso rígido
+                                   con el futuro.
+
+Conviene advertir explícitamente de errores comunes:
+
+ ●   Gantt excesivamente detallados al inicio.
+ ●   Uso del Gantt como “contrato inamovible”.
+ ●   No actualizar el cronograma cuando el proyecto cambia.
+ ●   Confundir avance temporal con avance real.
+
+
+
+      Un Gantt no es una promesa, es una herramienta para pensar el tiempo.
+                     Plazo total del proyecto ﬁjo y equipo reducido.
+
+                     Se pide:
+
+                      ●   organizar el proyecto en grandes bloques
+Aplicación web            temporales (no tareas),
+                          4-5 hitos principales
+para la gestión de
+                      ●
+                      ●   identiﬁcar dependencias evidentes.
+
+reservas y turnos    Con esto:
+
+de un pequeño         ●   ¿qué no puede hacerse en paralelo?
+
+gimnasio
+                      ●   ¿dónde aparecería un cuello de botella?
+                      ●   ¿qué hito aporta más información?
+Estimación de costes
+
+El coste de un proyecto software es el conjunto de recursos económicos que se consumen como
+consecuencia de su desarrollo, uso y entrega.
+
+
+
+En proyectos software, a diferencia de otros ámbitos de ingeniería, el coste está fuertemente dominado
+por el factor humano, pero no se limita exclusivamente a él.
+
+
+
+El coste no aparece al ﬁnal del proyecto: se va generando desde las primeras decisiones de alcance,
+planiﬁcación y organización
+Tipos de costes en proyectos
+
+COSTES DIRECTOS
+
+Son los costes directamente atribuibles al proyecto concreto, es decir, aquellos que pueden asignarse sin
+ambigüedad a su ejecución.
+
+Incluyen principalmente:
+
+ ●   Coste del esfuerzo humano
+ ●   Tecnología e infraestructura especíﬁcas del proyecto,
+
+
+
+
+                  si el coste existe porque existe el proyecto, es directo.
+Tipos de costes en proyectos
+
+COSTES INDIRECTOS
+
+Son costes necesarios para que el proyecto pueda desarrollarse, pero que no pueden asignarse de forma
+directa a una tarea o proyecto concreto, o se comparten entre varios proyectos.
+
+Estos costes:
+
+ ●   no dependen de una tarea concreta,
+ ●   suelen crecer con el tiempo y el tamaño del equipo,
+ ●   y no desaparecen aunque una tarea se retrase.
+
+En fases tempranas, es habitual estimarlos como un porcentaje del coste directo de RR. HH., práctica
+aceptada en la literatura y en la industria.
+Tipos de costes en proyectos
+
+COSTES EXTRA
+
+ ●   Costes ocultos o diferidos:
+
+      ○   Son costes que no se planiﬁcan explícitamente, pero aparecen como consecuencia de
+          decisiones previas mal ajustadas.
+
+ ●   Costes de coordinación y gestión
+
+      ○   En proyectos con más de una persona, aparece un coste asociado a coordinación del equipo,
+          comunicación, reuniones, integración del trabajo.
+
+ ●   Costes asociados a cambios
+
+      ○   Los cambios introducen un coste acumulativo que incluye replaniﬁcación, modiﬁcación
+          de trabajo ya realizado, impacto en pruebas y validación, aumento del riesgo de errores.
+                     Asumimos que el principal coste es el esfuerzo
+                     humano, pero:
+
+                      ●    ¿qué otros costes aparecen en este proyecto?
+
+Aplicación web       ¿Cuales son directos, indirectos, ocultos o diferidos?
+
+para la gestión de   ¿Qué decisiones tempranas aumentan estos costes
+                     sin que se note?
+reservas y turnos
+de un pequeño
+gimnasio
+Incertidumbre y márgenes en la estimación
+
+Toda estimación en software es incierta por naturaleza.
+
+Fuentes habituales de incertidumbre:
+
+ ●   alcance incompleto,
+ ●   riesgos técnicos,
+ ●   aprendizaje durante el desarrollo,
+ ●   cambios inevitables.
+
+Por ello las estimaciones deben expresarse como rangos, deben incluir márgenes, y deben revisarse
+periódicamente.
+
+
+                          El problema no es equivocarse al estimar,
+                       es no asumir que la estimación puede cambiar.
+Revisión y ajuste de estimaciones
+
+La estimación no es un acto único al inicio del proyecto.
+
+Debe revisarse cuando:
+
+ ●   cambia el alcance,
+ ●   aparecen riesgos,
+ ●   se detectan desviaciones,
+ ●   se alcanza un hito relevante.
+
+
+
+
+      Estimar es el primer paso. Lo importante es saber si la estimación se está
+                                     cumpliendo.
+

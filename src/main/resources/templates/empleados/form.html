@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head(${esNuevo} ? 'Nuevo Empleado' : 'Editar Empleado')}"></head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+<div th:replace="~{fragments/layout :: navbar}"></div>
+<div th:replace="~{fragments/layout :: messages}"></div>
+
+<main class="container my-4 flex-grow-1">
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/empleados}">Empleados</a></li>
+            <li class="breadcrumb-item active" th:text="${esNuevo} ? 'Nuevo Empleado' : 'Editar Empleado'">Empleado</li>
+        </ol>
+    </nav>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white">
+                    <h4 class="mb-0 fw-bold">
+                        <i th:class="${esNuevo} ? 'bi bi-person-plus text-primary me-2' : 'bi bi-pencil text-warning me-2'"></i>
+                        <span th:text="${esNuevo} ? 'Nuevo Empleado' : 'Editar Empleado'">Empleado</span>
+                    </h4>
+                </div>
+                <div class="card-body p-4">
+                    <form th:action="${esNuevo} ? @{/empleados/nuevo} : @{/empleados/{id}/editar(id=${usuario.id})}"
+                          th:object="${usuario}" method="post" novalidate>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="nombre" class="form-label fw-semibold">Nombre <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="nombre" th:field="*{nombre}"
+                                       placeholder="Nombre" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="apellidos" class="form-label fw-semibold">Apellidos <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="apellidos" th:field="*{apellidos}"
+                                       placeholder="Apellidos" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="email" class="form-label fw-semibold">Correo Electrónico <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="email" th:field="*{email}"
+                                       placeholder="correo@ejemplo.com" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="password" class="form-label fw-semibold">
+                                    Contraseña
+                                    <span th:if="${esNuevo}" class="text-danger">*</span>
+                                    <span th:if="${!esNuevo}" class="text-muted small">(dejar vacío para no cambiar)</span>
+                                </label>
+                                <input type="password" class="form-control" id="password" th:field="*{password}"
+                                       placeholder="••••••••" th:required="${esNuevo}">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="rol" class="form-label fw-semibold">Rol <span class="text-danger">*</span></label>
+                                <select class="form-select" id="rol" th:field="*{rol}" required>
+                                    <option value="">-- Seleccionar rol --</option>
+                                    <option th:each="r : ${roles}" th:value="${r.name()}" th:text="${r.name()}">ROL</option>
+                                </select>
+                            </div>
+                            <div class="col-12" th:if="${!esNuevo}">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="activo" th:field="*{activo}">
+                                    <label class="form-check-label fw-semibold" for="activo">Usuario activo</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+                        <div class="d-flex justify-content-between">
+                            <a th:href="@{/empleados}" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left me-1"></i>Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-save me-1"></i>
+                                <span th:text="${esNuevo} ? 'Crear Empleado' : 'Guardar Cambios'">Guardar</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

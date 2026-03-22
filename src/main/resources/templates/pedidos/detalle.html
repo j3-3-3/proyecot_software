@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/layout :: head('Detalle Pedido')}"></head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+<div th:replace="~{fragments/layout :: navbar}"></div>
+<div th:replace="~{fragments/layout :: messages}"></div>
+
+<main class="container my-4 flex-grow-1">
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/pedidos}">Pedidos</a></li>
+            <li class="breadcrumb-item active" th:text="'Pedido #' + ${pedido.id}">Pedido</li>
+        </ol>
+    </nav>
+
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0 fw-bold">
+                        <i class="bi bi-cart3 text-primary me-2"></i>Pedido #<span th:text="${pedido.id}"></span>
+                    </h5>
+                    <span class="badge fs-6"
+                          th:classappend="${pedido.estado.name() == 'PENDIENTE'} ? 'text-bg-warning' :
+                                         (${pedido.estado.name() == 'EN_PREPARACION'} ? 'text-bg-info' :
+                                         (${pedido.estado.name() == 'EN_REPARTO'} ? 'text-bg-primary' :
+                                         (${pedido.estado.name() == 'ENTREGADO'} ? 'text-bg-success' : 'text-bg-danger')))"
+                          th:text="${pedido.estado.label}">Estado</span>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <div class="text-muted small fw-semibold">CLIENTE</div>
+                            <div th:text="${pedido.cliente.nombreCompleto}">Cliente</div>
+                            <div class="text-muted small" th:text="${pedido.cliente.email}">email</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-muted small fw-semibold">FECHA DEL PEDIDO</div>
+                            <div th:text="${#temporals.format(pedido.fechaPedido, 'dd/MM/yyyy HH:mm')}">Fecha</div>
+                        </div>
+                        <div class="col-12">
+                            <div class="text-muted small fw-semibold">DIRECCIÓN DE ENTREGA</div>
+                            <div th:text="${pedido.direccionEntrega}">Dirección</div>
+                        </div>
+                        <div class="col-12" th:if="${pedido.observaciones != null and !#strings.isEmpty(pedido.observaciones)}">
+                            <div class="text-muted small fw-semibold">OBSERVACIONES</div>
+                            <div th:text="${pedido.observaciones}">-</div>
+                        </div>
+                    </div>
+
+                    <!-- Items -->
+                    <h6 class="fw-bold text-muted text-uppercase small mb-2">Productos del pedido</h6>
+                    <div class="table-responsive">
+                        <table class="table table-sm align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Producto</th>
+                                    <th class="text-center">Cant.</th>
+                                    <th class="text-end">Precio Unit.</th>
+                                    <th class="text-end">Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="item : ${pedido.items}">
+                                    <td th:text="${item.producto.nombre}">Producto</td>
+                                    <td class="text-center" th:text="${item.cantidad}">0</td>
+                                    <td class="text-end" th:text="${#numbers.formatDecimal(item.precioUnitario,1,2)} + ' €'">0.00</td>
+                                    <td class="text-end fw-semibold" th:text="${#numbers.formatDecimal(item.subtotal,1,2)} + ' €'">0.00</td>
+                                </tr>
+                            </tbody>
+                            <tfoot class="table-group-divider">
+                                <tr>
+                                    <td colspan="3" class="text-end fw-bold">TOTAL</td>
+                                    <td class="text-end fw-bold text-primary fs-5"
+                                        th:text="${#numbers.formatDecimal(total,1,2)} + ' €'">0.00 €</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer bg-white d-flex justify-content-between">
+                    <a th:href="@{/pedidos}" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-1"></i>Volver
+                    </a>
+                    <div>
+                        <span th:if="${esAdmin and pedido.estado.name() == 'PENDIENTE'}">
+                            <form th:action="@{/pedidos/{id}/aprobar(id=${pedido.id})}" method="post" class="d-inline">
+                                <button type="submit" class="btn btn-success me-2">
+                                    <i class="bi bi-check-circle me-1"></i>Aprobar y Crear Entrega
+                                </button>
+                            </form>
+                        </span>
+                        <span th:if="${(esPropietario or esAdmin) and (pedido.estado.name() == 'PENDIENTE' or pedido.estado.name() == 'EN_PREPARACION')}">
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#cancelModal">
+                                <i class="bi bi-x-circle me-1"></i>Cancelar Pedido
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delivery Info -->
+        <div class="col-lg-4" th:if="${entrega != null}">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white">
+                    <h6 class="mb-0 fw-bold"><i class="bi bi-truck-front text-info me-2"></i>Información de Entrega</h6>
+                </div>
+                <div class="card-body">
+                    <div class="mb-2">
+                        <div class="text-muted small fw-semibold">ESTADO ENTREGA</div>
+                        <span class="badge text-bg-info" th:text="${entrega.estado.label}">-</span>
+                    </div>
+                    <div class="mb-2" th:if="${entrega.repartidor != null}">
+                        <div class="text-muted small fw-semibold">REPARTIDOR</div>
+                        <div th:text="${entrega.repartidor.nombreCompleto}">-</div>
+                    </div>
+                    <div class="mb-2" th:if="${entrega.fechaEntregaPrevista != null}">
+                        <div class="text-muted small fw-semibold">FECHA PREVISTA</div>
+                        <div th:text="${#temporals.format(entrega.fechaEntregaPrevista, 'dd/MM/yyyy')}">-</div>
+                    </div>
+                    <div class="mb-2" th:if="${entrega.fechaEntregaReal != null}">
+                        <div class="text-muted small fw-semibold">ENTREGADO EL</div>
+                        <div th:text="${#temporals.format(entrega.fechaEntregaReal, 'dd/MM/yyyy HH:mm')}">-</div>
+                    </div>
+                    <a sec:authorize="hasAnyRole('ADMIN','REPARTIDOR')"
+                       th:href="@{/entregas/{id}(id=${entrega.id})}" class="btn btn-sm btn-outline-info w-100 mt-2">
+                        <i class="bi bi-eye me-1"></i>Ver Entrega
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div class="modal fade" id="cancelModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Cancelar Pedido</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">¿Está seguro de que desea cancelar este pedido? Se restaurará el stock de los productos.</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <form th:action="@{/pedidos/{id}/cancelar(id=${pedido.id})}" method="post">
+                    <button type="submit" class="btn btn-danger">Sí, cancelar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

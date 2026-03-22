@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Actualizar Estado Entrega')}"></head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+<div th:replace="~{fragments/layout :: navbar}"></div>
+<div th:replace="~{fragments/layout :: messages}"></div>
+
+<main class="container my-4 flex-grow-1">
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/entregas}">Entregas</a></li>
+            <li class="breadcrumb-item"><a th:href="@{/entregas/{id}(id=${entrega.id})}"
+                                           th:text="'Entrega #' + ${entrega.id}">Entrega</a></li>
+            <li class="breadcrumb-item active">Actualizar Estado</li>
+        </ol>
+    </nav>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white">
+                    <h4 class="mb-0 fw-bold">
+                        <i class="bi bi-arrow-repeat text-success me-2"></i>
+                        Actualizar Estado — Entrega #<span th:text="${entrega.id}"></span>
+                    </h4>
+                </div>
+                <div class="card-body p-4">
+                    <div class="alert alert-light border mb-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-muted fw-semibold">ESTADO ACTUAL</small>
+                                <div>
+                                    <span class="badge fs-6"
+                                          th:classappend="${entrega.estado.name() == 'PENDIENTE'} ? 'text-bg-warning' :
+                                                         (${entrega.estado.name() == 'EN_REPARTO'} ? 'text-bg-primary' :
+                                                         (${entrega.estado.name() == 'ENTREGADO'} ? 'text-bg-success' :
+                                                         (${entrega.estado.name() == 'INCIDENCIA'} ? 'text-bg-danger' : 'text-bg-secondary')))"
+                                          th:text="${entrega.estado.label}">Estado</span>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <small class="text-muted fw-semibold">PEDIDO</small>
+                                <div class="small" th:text="'#' + ${entrega.pedido.id}">-</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form th:action="@{/entregas/{id}/estado(id=${entrega.id})}" th:object="${form}" method="post">
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Nuevo Estado <span class="text-danger">*</span></label>
+                            <div class="row g-2">
+                                <div class="col-6" th:each="e : ${estados}">
+                                    <input class="btn-check" type="radio" th:field="*{estado}"
+                                           th:id="'estado_' + ${e.name()}" th:value="${e.name()}">
+                                    <label class="btn btn-outline-secondary w-100"
+                                           th:for="'estado_' + ${e.name()}"
+                                           th:text="${e.label}">Estado</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="notas" class="form-label fw-semibold">Notas / Observaciones</label>
+                            <textarea class="form-control" id="notas" th:field="*{notas}"
+                                      rows="3" placeholder="Descripción del estado actual..."></textarea>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a th:href="@{/entregas/{id}(id=${entrega.id})}" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left me-1"></i>Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-check-circle me-1"></i>Actualizar Estado
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

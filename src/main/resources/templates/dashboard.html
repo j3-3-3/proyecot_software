@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/layout :: head('Dashboard')}"></head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+<div th:replace="~{fragments/layout :: navbar}"></div>
+<div th:replace="~{fragments/layout :: messages}"></div>
+
+<main class="container my-4 flex-grow-1">
+    <div class="d-flex align-items-center mb-4">
+        <h2 class="mb-0 fw-bold"><i class="bi bi-speedometer2 me-2 text-primary"></i>Dashboard</h2>
+        <span class="ms-3 badge fs-6"
+              th:classappend="${rol == 'ADMIN'} ? 'bg-danger' : (${rol == 'OPERARIO'} ? 'bg-warning text-dark' : (${rol == 'REPARTIDOR'} ? 'bg-info text-dark' : 'bg-success'))"
+              th:text="${rol}">ROL</span>
+    </div>
+    <p class="text-muted" th:if="${usuario != null}">
+        Bienvenido/a, <strong th:text="${usuario.nombreCompleto}">Usuario</strong>
+    </p>
+
+    <!-- ADMIN DASHBOARD -->
+    <div sec:authorize="hasRole('ADMIN')">
+        <div class="row g-4 mb-4">
+            <div class="col-sm-6 col-xl-3">
+                <div class="card text-bg-primary border-0 shadow-sm h-100">
+                    <div class="card-body d-flex align-items-center justify-content-between">
+                        <div>
+                            <div class="fs-2 fw-bold" th:text="${totalProductos}">0</div>
+                            <div class="small opacity-75">Productos activos</div>
+                        </div>
+                        <i class="bi bi-boxes fs-1 opacity-50"></i>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 pt-0">
+                        <a th:href="@{/inventario}" class="text-white text-decoration-none small">
+                            Ver inventario <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="card text-bg-success border-0 shadow-sm h-100">
+                    <div class="card-body d-flex align-items-center justify-content-between">
+                        <div>
+                            <div class="fs-2 fw-bold" th:text="${totalPedidos}">0</div>
+                            <div class="small opacity-75">Total pedidos</div>
+                        </div>
+                        <i class="bi bi-cart3 fs-1 opacity-50"></i>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 pt-0">
+                        <a th:href="@{/pedidos}" class="text-white text-decoration-none small">
+                            Ver pedidos <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="card text-bg-warning border-0 shadow-sm h-100">
+                    <div class="card-body d-flex align-items-center justify-content-between">
+                        <div>
+                            <div class="fs-2 fw-bold" th:text="${totalEntregas}">0</div>
+                            <div class="small opacity-75">Entregas</div>
+                        </div>
+                        <i class="bi bi-truck-front fs-1 opacity-50"></i>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 pt-0">
+                        <a th:href="@{/entregas}" class="text-dark text-decoration-none small">
+                            Ver entregas <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="card text-bg-info border-0 shadow-sm h-100">
+                    <div class="card-body d-flex align-items-center justify-content-between">
+                        <div>
+                            <div class="fs-2 fw-bold" th:text="${totalUsuarios}">0</div>
+                            <div class="small opacity-75">Usuarios</div>
+                        </div>
+                        <i class="bi bi-people fs-1 opacity-50"></i>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 pt-0">
+                        <a th:href="@{/empleados}" class="text-dark text-decoration-none small">
+                            Ver empleados <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <a th:href="@{/inventario/nuevo}" class="card card-body text-decoration-none text-dark border-primary h-100 hover-shadow">
+                    <i class="bi bi-plus-circle text-primary fs-2 mb-2"></i>
+                    <h6 class="fw-bold">Nuevo Producto</h6>
+                    <small class="text-muted">Agregar producto al inventario</small>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a th:href="@{/empleados/nuevo}" class="card card-body text-decoration-none text-dark border-success h-100">
+                    <i class="bi bi-person-plus text-success fs-2 mb-2"></i>
+                    <h6 class="fw-bold">Nuevo Empleado</h6>
+                    <small class="text-muted">Registrar usuario en el sistema</small>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a th:href="@{/vehiculos/nuevo}" class="card card-body text-decoration-none text-dark border-warning h-100">
+                    <i class="bi bi-car-front text-warning fs-2 mb-2"></i>
+                    <h6 class="fw-bold">Nuevo Vehículo</h6>
+                    <small class="text-muted">Añadir vehículo a la flota</small>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- OPERARIO DASHBOARD -->
+    <div sec:authorize="hasRole('OPERARIO')">
+        <div class="row g-4 mb-4">
+            <div class="col-sm-6">
+                <div class="card text-bg-primary border-0 shadow-sm">
+                    <div class="card-body d-flex align-items-center justify-content-between">
+                        <div>
+                            <div class="fs-2 fw-bold" th:text="${totalProductos}">0</div>
+                            <div class="small opacity-75">Productos activos</div>
+                        </div>
+                        <i class="bi bi-boxes fs-1 opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card text-bg-success border-0 shadow-sm">
+                    <div class="card-body d-flex align-items-center justify-content-between">
+                        <div>
+                            <div class="fs-2 fw-bold" th:text="${categorias}">0</div>
+                            <div class="small opacity-75">Categorías</div>
+                        </div>
+                        <i class="bi bi-tag fs-1 opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <a th:href="@{/inventario}" class="card card-body text-decoration-none text-dark border-primary">
+                    <i class="bi bi-list-ul text-primary fs-2 mb-2"></i>
+                    <h6 class="fw-bold">Ver Inventario</h6>
+                    <small class="text-muted">Gestionar todos los productos</small>
+                </a>
+            </div>
+            <div class="col-md-6">
+                <a th:href="@{/inventario/nuevo}" class="card card-body text-decoration-none text-dark border-success">
+                    <i class="bi bi-plus-circle text-success fs-2 mb-2"></i>
+                    <h6 class="fw-bold">Registrar Entrada</h6>
+                    <small class="text-muted">Añadir nuevo producto al stock</small>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- REPARTIDOR DASHBOARD -->
+    <div sec:authorize="hasRole('REPARTIDOR')">
+        <div class="row g-4 mb-4">
+            <div class="col-sm-6">
+                <div class="card text-bg-info border-0 shadow-sm">
+                    <div class="card-body d-flex align-items-center justify-content-between">
+                        <div>
+                            <div class="fs-2 fw-bold" th:text="${misEntregas}">0</div>
+                            <div class="small opacity-75">Mis entregas</div>
+                        </div>
+                        <i class="bi bi-truck-front fs-1 opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <a th:href="@{/entregas}" class="card card-body text-decoration-none text-dark border-info">
+                    <i class="bi bi-truck-front text-info fs-2 mb-2"></i>
+                    <h6 class="fw-bold">Mis Entregas</h6>
+                    <small class="text-muted">Ver y actualizar mis rutas de entrega</small>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CLIENTE DASHBOARD -->
+    <div sec:authorize="hasRole('CLIENTE')">
+        <div class="row g-4 mb-4">
+            <div class="col-sm-6">
+                <div class="card text-bg-success border-0 shadow-sm">
+                    <div class="card-body d-flex align-items-center justify-content-between">
+                        <div>
+                            <div class="fs-2 fw-bold" th:text="${misPedidos}">0</div>
+                            <div class="small opacity-75">Mis pedidos</div>
+                        </div>
+                        <i class="bi bi-cart3 fs-1 opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <a th:href="@{/pedidos/nuevo}" class="card card-body text-decoration-none text-dark border-primary">
+                    <i class="bi bi-cart-plus text-primary fs-2 mb-2"></i>
+                    <h6 class="fw-bold">Nuevo Pedido</h6>
+                    <small class="text-muted">Crear un nuevo pedido</small>
+                </a>
+            </div>
+            <div class="col-md-6">
+                <a th:href="@{/pedidos}" class="card card-body text-decoration-none text-dark border-success">
+                    <i class="bi bi-list-ul text-success fs-2 mb-2"></i>
+                    <h6 class="fw-bold">Mis Pedidos</h6>
+                    <small class="text-muted">Ver el estado de mis pedidos</small>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+<div th:replace="~{fragments/layout :: scripts}"></div>
+</body>
+</html>

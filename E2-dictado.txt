@@ -1,0 +1,107 @@
+ESTIMACIÓN DE ESFUERZO Y COSTES
+CUANTO TRABAJO REAL IMPLICA ESTE PROYECTO:
+Estimación de esfuerzo total
+Distribución aprox por bloques funcionales
+Justificación de las estimaciones
+Supuestos adoptados
+Criterio Implícito:
+Que el esfuerzo derive del alcance
+Que no sean números arbitrarios
+Que se diferencia esfuerzo de duración
+
+(Nombrar correcciones respecto a la primera entrega si hay)
+
+QUÉ RECURSOS ECONÓMICOS
+Costes directos 
+Costes indirectos
+Costes derivados de cambios o retrabajo
+
+Coherencia entre esfuerzo y coste:
+No se exige contabilidad exhaustiva. Sí se exige comprensión de qué genera costes
+
+QUE NO ESPERO EN ESTA PARTE
+Precision matematica
+Modelos formales avanzados
+Detalle financiero profesional
+QUE SI
+coherencia
+Justificación razonada
+Conciencia de incertidumbre ( la luz se va, alguien se pone malo)
+
+PLANIFICACIÓN TEMPORAL
+CÓMO SE DISTRIBUYE EL ESFUERZO EN EL TIEMPO
+Diagrama de Gantt (Cronograma del proyecto)
+Fases principales
+Hitos relevantes
+Secuencia lógica
+Relación entregables
+Criterio implícito:
+Que el calendario sea creíble
+Que el proyecto quepa en el tiempo disponible
+
+El cronograma debe reflejar coherencia temporal:
+Dependencias entre tareas
+No concentrar todo al final
+Tiempo suficiente para pruebas
+Margen razonable ante imprevistos
+
+Planificar no es adivinar, es anticipar decisiones
+
+QUE NO SE ESPERA:
+Gant excesivamente detallado
+Herramientas sofisticadas
+Compromiso rígido inamovible
+QUE SI:
+Visión clara del tiempo
+Estructura lógica
+Coherencia con la estimación
+
+IDENTIFICACIÓN Y ANÁLISIS DE RIESGOS
+QUE PUEDE SALIR MAL
+Riesgos técnicos
+Riesgos organizativos
+Riesgos de alcance
+Riesgos de planificación
+Criterio implícito:
+Riego = error ya ocurrido (o que es inevitable)
+Deben estar formulados como incertidumbre futura
+
+Para cada riesgo
+Probabilidad aproximada
+Impacto potencial
+Estrategia adoptada(evitar, reducir,..)
+Plan de contingencia si procede
+
+No se espera formalismo complejo. Si se espera pensamiento crítico
+Que se prioricen los riesgos relevantes
+Que no todos los riesgos tienen el mismo impacto
+
+QUE NO SE ESPERA
+Listas genéricas copiadas
+Riesgos mal formulados (“Que haya bugs”)
+Ausencia de acciones concretas
+Análisis superficial
+QUE SI SE ESPERA
+Priorización
+Realismo
+Planes activables
+Esta estructura:
+aplica T4
+desarrolla T5
+conecta con la planificación inicial de E1
+
+Además:
+obliga a comprobar si el proyecto es viable
+permite detectar desviaciones
+
+QUE SE EVALÚA
+No evalúa ejecución técnica
+
+Evalúa:
+capacidad de estimación con criterio
+capacidad de planificar con realismo
+capacidad de anticipar problemas
+
+En proyector:
+No se falla por estimar
+Se falla por no revisar la estimación a tiempo

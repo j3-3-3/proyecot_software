@@ -1,0 +1,46 @@
+Que hacer:
+	Medir estado real
+	Detectar desviaciones
+	Analizar impacto
+	Realizar ajuste
+
+Estado real del proyecto:
+	Planificado vs real
+	Estimado vs consumido
+	Fecha prevista vs fecha actual
+
+Desviaciones:
+	No son:
+		Problemas puntuales
+		Periodos de complicaciones
+	Son:
+		Retrasos acumulados
+		Sobreesfuerzo sistemático
+		Crecimiento de alcance
+		Aumento sostenido de incidencias
+		Caída de calidad
+
+	Análisis de impacto: Afecta al tiempo, coste, calidad, riesgo?
+
+Replanificación: 
+	En caso de desviación:
+		Reducir alcance
+		Repriorizar
+		Ajustar cronograma
+		Reasignar esfuerzo
+		Simplificar funcionalidades
+	
+	En el plan actualizado: Decir si se han movido hitos, eliminado tareas, añadido riesgos, 
+				ajustado el esfuerzo previsto
+
+El entregable debe tener:
+	Métricas reales
+	Comparación con E2
+	Desviaciones identificadas
+	Análisis de impacto
+	Decisiones tomadas
+	Plan actualizado
+
+	Capacidad de análisis
+	Capacidad de decidir
+	Coherencia entre diagnostico y ajuste

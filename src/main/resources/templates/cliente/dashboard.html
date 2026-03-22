@@ -66,8 +66,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="p : ${misPedidos}" th:if="${#lists.size(misPedidos) > 0}"
-                                th:with="count=${0}">
+                            <tr th:each="p : ${misPedidos}">
                                 <td th:text="${p.id}">1</td>
                                 <td class="text-muted small"
                                     th:text="${#temporals.format(p.fechaSolicitud,'dd/MM/yyyy')}">fecha</td>
